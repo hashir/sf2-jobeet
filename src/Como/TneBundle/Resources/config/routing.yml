@@ -1,0 +1,19 @@
+#como_tne_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: ComoTneBundle:Default:index }
+#    
+job_home_page:
+    pattern:  /
+    defaults: { _controller: ComoTneBundle:Job:index }
+    
+ComoTneBundle_job:
+    resource: "@ComoTneBundle/Resources/config/routing/job.yml"
+    prefix:   /job
+    
+ComoTneBundle_category:
+        resource: "@ComoTneBundle/Resources/config/routing/category.yml"
+        prefix:   /category
+    
+ComoTneBundle_category:
+    pattern:  /category/{slug}/{page}
+    defaults: { _controller: ComoTneBundle:Category:show, page: 1 }
