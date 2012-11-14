@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new Como\TneBundle\ComoTneBundle(),
 	    new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new FOS\UserBundle\FOSUserBundle()
+//            new FOS\UserBundle\FOSUserBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

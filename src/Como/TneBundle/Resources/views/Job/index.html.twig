@@ -1,28 +1,24 @@
 {% extends 'ComoTneBundle::layout.html.twig' %}
 
-{% block stylesheets %}
-  {{ parent() }}
-  <link rel="stylesheet" href="{{ asset('bundles/comotne/css/jobs.css') }}" type="text/css" media="all" />
-{% endblock %}
+{% block headline %}Jobbet Job Board{% endblock headline %}
+
 {% block content %}
-  <div id="jobs">
-    {% for category in categories %}
-      <div>
-        <div class="category">
-          <div class="feed">
-            <a href="">Feed</a>
+        {% for category in categories %}     
+          <div class="row-fluid"><div class="span12">            
+            <h1><a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.name }}</a></h1> 
           </div>
-          <h1><a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.name }}</a></h1>
-        </div>
-        {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
+        
+          {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
+
+          <div class="row-fluid">
             {% if category.morejobs %}
-            <div class="more_jobs">
+            <div class="span9 more_jobs">
+            </div>
+            <div class="span3 more_jobs">
               and <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.morejobs }}</a>
               more...
             </div>
           {% endif %}
         </div>
       {% endfor %}
-     
-  </div>
-{% endblock %}
+{% endblock content %}

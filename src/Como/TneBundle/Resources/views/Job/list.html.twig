@@ -1,13 +1,10 @@
-<table class="jobs">
-  {% for entity in jobs %}
-    <tr class="{{ cycle(['even', 'odd'], loop.index) }}">
-      <td class="location">{{ entity.location }}</td>
-      <td class="position">
+{% for entity in jobs %}
+   <div class="{{ cycle(['row-fluid even', 'row-fluid odd'], loop.index) }}">
+    <div class="span4">{{ entity.location }}</div>
+    <div class="span4">
         <a href="{{ path('job_show', { 'id': entity.id, 'company': entity.companyslug, 'location': entity.locationslug, 'position': entity.positionslug }) }}">
           {{ entity.position }}
-        </a>
-      </td>
-      <td class="company">{{ entity.company }}</td>
-    </tr>
+        </a></div>
+    <div class="span4">{{ entity.company }}</div>
+   </div>
   {% endfor %}
-</table>
