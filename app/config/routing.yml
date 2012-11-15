@@ -1,3 +1,7 @@
+como_tne_user:
+    resource: "@ComoTneUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 como_tne:
     resource: "@ComoTneBundle/Resources/config/routing.yml"
     prefix:   /
