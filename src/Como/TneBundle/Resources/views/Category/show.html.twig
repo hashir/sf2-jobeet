@@ -11,14 +11,14 @@
  
 {% block content %}
   <div class="category">
-    <div class="feed">
-      <a href="">Feed</a>
-    </div>
+    
     <h1>{{ category.name }}</h1>
   </div>
  
   {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
- 
+ <div class="row-fluid">
+    <div class="span8"></div>
+    <div class="span4">
   {% if last_page > 1 %}
     <div class="pagination">
       <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': 1 }) }}">
@@ -46,7 +46,7 @@
       </a>
     </div>
   {% endif %}
- 
+ </div></div>
   <div class="pagination_desc">
     <strong>{{ total_jobs }}</strong> jobs in this category
  

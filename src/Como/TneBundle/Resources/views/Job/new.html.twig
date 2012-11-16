@@ -19,100 +19,14 @@
   <link rel="stylesheet" href="{{ asset('bundles/comotne/css/job.css') }}" type="text/css" media="all" />
 {% endblock %}
  
-{% block headline %}<h1>Job creation</h1>{% endblock headline %}
+{% block headline %}<h4>Job creation</h4>{% endblock headline %}
 
 {% block content %}
   
-  <form action="{{ path('job_create') }}" method="post" {{ form_enctype(form) }}>    
+  <form action="{{ path('job_create') }}" method="post" {{ form_enctype(form) }}  class="well">    
    
-      
-        <div class="row-fluid" >
-          <div class="span4">{{ form_label(form.category) }}</div>
-          <div class="span8">
-            {{ form_errors(form.category) }}
-            {{ form_widget(form.category) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.type) }}</div>
-          <div class="span8">
-            {{ form_errors(form.type) }}
-            {{ form_widget(form.type) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.company) }}</div>
-          <div class="span8">
-            {{ form_errors(form.company) }}
-            {{ form_widget(form.company) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.file) }}</div>
-          <div class="span8">
-            {{ form_errors(form.file) }}
-            {{ form_widget(form.file) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.url) }}</div>
-          <div class="span8">
-            {{ form_errors(form.url) }}
-            {{ form_widget(form.url) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.position) }}</div>
-          <div class="span8">
-            {{ form_errors(form.position) }}
-            {{ form_widget(form.position) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.location) }}</div>
-          <div class="span8">
-            {{ form_errors(form.location) }}
-            {{ form_widget(form.location) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.description) }}</div>
-          <div class="span8">
-            {{ form_errors(form.description) }}
-            {{ form_widget(form.description) }}
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.how_to_apply) }}</div>
-          <div class="span8">
-            {{ form_errors(form.how_to_apply) }}
-            {{ form_widget(form.how_to_apply) }}
-          </div>
-        </div>        
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.is_public) }}</div>
-          <div class="span8">
-            {{ form_errors(form.is_public) }}
-            {{ form_widget(form.is_public) }}
-            <br /> Whether the job can also be published on affiliate websites or not.
-          </div>
-        </div>
-        <br/><div class="row-fluid" >
-          <div class="span4">{{ form_label(form.email) }}</div>
-          <div class="span8">
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email) }}
-          </div>
-        </div>    
- 
-    {{ form_rest(form) }}
-   <hr />
-           
-    <div class="row-fluid" >
-          <div colspan="12">
-            <input type="submit" value="Preview your job" />
-          </div>
-    </div >
-
+       {{ form_widget(form) }}
+       <legend></legend>
+              <button type="submit" value="Preview Your Job" class="btn">Submit</button>
   </form>
 {% endblock %}

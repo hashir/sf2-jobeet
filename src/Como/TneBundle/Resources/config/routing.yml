@@ -10,7 +10,7 @@ ComoTneBundle_job:
     resource: "@ComoTneBundle/Resources/config/routing/job.yml"
     prefix:   /job
     
-ComoTneBundle_category:
+ComoTneBundle_job_category:
         resource: "@ComoTneBundle/Resources/config/routing/category.yml"
         prefix:   /category
     

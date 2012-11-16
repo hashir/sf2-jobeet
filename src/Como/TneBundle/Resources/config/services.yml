@@ -1,7 +1,40 @@
 parameters:
 #    como_tne.example.class: Como\TneBundle\Example
 
-services:
+#services:
 #    como_tne.example:
 #        class: %como_tne.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    comotne.navbar:
+        class: '%mopa_bootstrap.navbar.generic%'
+        scope: request
+        arguments:
+            - { leftmenu: @comotne.navbar_main_menu=, rightmenu: @comotne.navbar_right_menu= }
+            - {}
+            - { title: "Como Tne", titleRoute: "job", fixedTop: false, isFluid: true }
+        tags:
+            - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
+
+    comotne.navbar_menu_builder:
+        class: Como\TneBundle\Menu\NavbarMenuBuilder
+        scope: request
+        arguments: [ '@knp_menu.factory', '@security.context' ]
+
+    comotne.navbar_main_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: comotne.navbar_menu_builder
+        factory_method: createMainMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    comotne.navbar_right_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: comotne.navbar_menu_builder
+        factory_method: createRightSideDropdownMenu
+        arguments: ['@request', "@security.context"]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }

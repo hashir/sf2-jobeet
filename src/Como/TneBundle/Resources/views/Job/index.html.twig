@@ -4,8 +4,8 @@
 
 {% block content %}
         {% for category in categories %}     
-          <div class="row-fluid"><div class="span12">            
-            <h1><a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.name }}</a></h1> 
+          <div class="row-fluid "><div class="span12">            
+            <h4><a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.name }}</a></h4> 
           </div>
         
           {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}

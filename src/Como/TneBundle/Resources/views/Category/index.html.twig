@@ -1,30 +1,25 @@
+{% extends 'ComoTneBundle::layout.html.twig' %}
+
+{% block headline %}Jobbet Job Board{% endblock headline %}
+
+{% block content %}
+
 <h1>Category list</h1>
 
-<table class="records_list">
+<table class=" table_striped">
     <thead>
         <tr>
-            <th>Id</th>
+            
             <th>Name</th>
-            <th>Slug</th>
-            <th>Actions</th>
+           
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('category_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        <tr class="{{ cycle(['even', 'odd'], loop.index) }}">
+            
             <td>{{ entity.name }}</td>
-            <td>{{ entity.slug }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('category_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('category_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
+           
         </tr>
     {% endfor %}
     </tbody>
@@ -37,3 +32,4 @@
         </a>
     </li>
 </ul>
+{% endblock content %}

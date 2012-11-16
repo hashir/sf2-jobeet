@@ -1,20 +1,23 @@
 {% extends '::base.html.twig' %}
 
 {% block head_style %}
-    {{parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/comotne/css/main.css') }}" type="text/css" media="all" />
+    {{parent() }}    
 {% endblock head_style %}
 
+{% block title %}Como Tne Bundle{% endblock title %}
 
 {% block body %}
+{% block navbar %}
+   {{ mopa_bootstrap_navbar('frontendNavbar') }}
+{% endblock navbar %}
     {% block container %}
-<div class="container-fluid">
-    <div class="row-fluid">
+<div class="container-fluid ">
+    <div class="row-fluid" >
         <div class="span1">
         &nbsp;
         </div>
         <div class="span10">
-            <div class="row-fluid" >
+            <div class="row-fluid" style="background: #aaa" >
                 <div class="span6">
                     <a href="{{ path('job_home_page') }}">
                         <img src="{{ asset('bundles/comotne/images/logo.jpg') }}" alt="Jobeet Job Board" />
@@ -25,31 +28,13 @@
                 </div>
             </div>
             
-            <div class="row-fluid">
-                <div class="span12">
-                    <h2>Ask for a job</h2>
-                </div>
-            </div>
-
-            <div class="row-fluid">
-                <div class="span12">
-                    <input type="text" name="keywords" id="search_keywords" />
-                
-                    <input type="submit" value="search" />
-                </div>
-            </div>
-
-            <div class="row-fluid">
-                <div class="span12 help">
-                    Enter some keywords (city, country, position, ...)
-                </div>
-            </div>
+            
 
             <div class="row-fluid">
                     <!--   content starts --->
                         
                         <div class="row-fluid">
-                              <h1>{% block headline %}Mopa Bootstrap Bundle{% endblock headline %}</h1>
+                              <h4>{% block headline %} {% endblock headline %}</h4>
                         </div>                      
 
                         {% block flashes %}
