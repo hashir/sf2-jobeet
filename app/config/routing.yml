@@ -1,5 +1,5 @@
-como_tne_user:
-    resource: "@ComoTneUserBundle/Resources/config/routing.yml"
+como_user:
+    resource: "@ComoUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 como_tne:
@@ -11,21 +11,21 @@ como_tne:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #    prefix:   /_internal
 
-#fos_user_security:
-#    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-#
-#fos_user_profile:
-#    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-#    prefix: /profile
-#
-#fos_user_register:
-#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-#    prefix: /register
-#
-#fos_user_resetting:
-#    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-#    prefix: /resetting
-#
-#fos_user_change_password:
-#    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-#    prefix: /profile
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

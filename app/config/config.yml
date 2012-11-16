@@ -5,6 +5,7 @@ imports:
 framework:
     #esi:             ~
     #translator:      { fallback: "%locale%" }
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -61,7 +62,14 @@ parameters:
     max_jobs_on_homepage: 5
     max_jobs_on_category: 20
     
-#fos_user:
-#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-#    firewall_name: main
-#    user_class: Como\TneBundle\Entity\User
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Como\UserBundle\Entity\User
+    
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default
+

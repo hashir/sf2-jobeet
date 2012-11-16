@@ -1,3 +1,0 @@
-como_tne_user_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ComoTneUserBundle:Default:index }

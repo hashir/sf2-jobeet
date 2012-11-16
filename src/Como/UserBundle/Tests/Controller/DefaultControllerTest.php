@@ -1,6 +1,6 @@
 <?php
 
-namespace Como\TneUserBundle\Tests\Controller;
+namespace Como\UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
