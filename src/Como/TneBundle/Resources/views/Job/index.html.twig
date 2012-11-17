@@ -10,15 +10,15 @@
         
           {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
 
-          <div class="row-fluid">
             {% if category.morejobs %}
-            <div class="span9 more_jobs">
-            </div>
-            <div class="span3 more_jobs">
-              and <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.morejobs }}</a>
-              more...
+          
+            <div>
+                <span class="pull-right">
+                  and <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.morejobs }}</a>
+                  more...
+                </span>
             </div>
           {% endif %}
-        </div>
+     
       {% endfor %}
 {% endblock content %}

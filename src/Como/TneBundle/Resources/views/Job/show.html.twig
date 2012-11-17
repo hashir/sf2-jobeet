@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('bundles/comotne/css/job.css') }}" type="text/css" media="all" />
 {% endblock %}
 
+{% block headline %}<h4>Job Details</h4>{% endblock headline %}
+
 {% block content %}
   {% if app.request.get('token') %}
     {% include 'ComoTneBundle:Job:admin.html.twig' with {'job': entity} %}

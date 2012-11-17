@@ -16,37 +16,44 @@
   </div>
  
   {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
- <div class="row-fluid">
-    <div class="span8"></div>
-    <div class="span4">
+ <div class="">
+    
   {% if last_page > 1 %}
-    <div class="pagination">
-      <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': 1 }) }}">
-        <img src="{{ asset('bundles/comotne/images/first.png') }}" alt="First page" title="First page" />
-      </a>
- 
-      <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': previous_page }) }}">
-        <img src="{{ asset('bundles/comotne/images/previous.png') }}" alt="Previous page" title="Previous page" />
-      </a>
+    <div class="pagination pull-right" style="margin: 0px;">
+    <ul>
+     <li>   
+          <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': 1 }) }}">First
+          </a>
+      </li>
+      <li>  
+          <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': previous_page }) }}">Prev</a>
+      </li>
  
       {% for page in 1..last_page %}
         {% if page == current_page %}
-          {{ page }}
+          <li>
+             <a href=""> {{ page }}</a>
+          </li>
         {% else %}
-          <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': page }) }}">{{ page }}</a>
+          <li>
+            <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': page }) }}">{{ page }}</a>
+          </li>
         {% endif %}
       {% endfor %}
- 
-      <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': next_page }) }}">
-        <img src="{{ asset('bundles/comotne/images/next.png') }}" alt="Next page" title="Next page" />
-      </a>
- 
+      <li>
+        <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': next_page }) }}">
+        Next
+        </a>
+      </li>
+      <li>
       <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, 'page': last_page }) }}">
-        <img src="{{ asset('bundles/comotne/images/last.png') }}" alt="Last page" title="Last page" />
-      </a>
+        Last
+        </a>
+      </li>
+    </ul>
     </div>
   {% endif %}
- </div></div>
+ 
   <div class="pagination_desc">
     <strong>{{ total_jobs }}</strong> jobs in this category
  
@@ -54,4 +61,5 @@
       - page <strong>{{ current_page }}/{{ last_page }}</strong>
     {% endif %}
   </div>
+</div>
 {% endblock %}
