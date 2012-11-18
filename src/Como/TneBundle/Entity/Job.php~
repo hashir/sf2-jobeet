@@ -3,6 +3,7 @@
 namespace Como\TneBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Como\TneBundle\Utils\Tne as Tne;
 
 /**
  * Como\TneBundle\Entity\Job
@@ -94,7 +95,7 @@ class Job
      */
     private $category;
 
-
+    public $file;
     /**
      * Get id
      *
@@ -478,6 +479,10 @@ class Job
     public function setTokenValue()
     {
         // Add your code here
+        if(!$this->getToken())
+          {
+            $this->token = sha1($this->getEmail().rand(11111, 99999));
+          }
     }
 
     /**
@@ -486,6 +491,10 @@ class Job
     public function preUpload()
     {
         // Add your code here
+        if (null !== $this->file) {
+        // do whatever you want to generate a unique name
+        $this->logo = uniqid().'.'.$this->file->guessExtension();
+      }
     }
 
     /**
@@ -528,6 +537,16 @@ class Job
     public function upload()
     {
         // Add your code here
+      if (null === $this->file) {
+        return;
+      }
+
+      // if there is an error when moving the file, an exception will
+      // be automatically thrown by move(). This will properly prevent
+      // the entity from being persisted to the database on error
+      $this->file->move($this->getUploadRootDir(), $this->logo);
+
+      unset($this->file);
     }
 
     /**
@@ -536,5 +555,76 @@ class Job
     public function removeUpload()
     {
         // Add your code here
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    /**
+     *
+     *   slugifaying 
+     */
+     public function getCompanySlug()
+    {
+        return Tne::slugify($this->getCompany());
+    }
+
+    public function getPositionSlug()
+    {
+        return Tne::slugify($this->getPosition());
+    }
+
+    public function getLocationSlug()
+    {
+        return Tne::slugify($this->getLocation());
+    }
+    
+    public static function getTypes()
+    {
+      return array('full-time' => 'Full time', 'part-time' => 'Part time', 'freelance' => 'Freelance');
+    }
+
+    public static function getTypeValues()
+    {
+      return array_keys(self::getTypes());
+    }
+    
+    protected function getUploadDir()
+    {
+        return 'uploads/jobs';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->logo ? null : $this->getUploadDir().'/'.$this->logo;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->logo ? null : $this->getUploadRootDir().'/'.$this->logo;
+    }
+    
+    public function isExpired()
+    {
+      return $this->getDaysBeforeExpires() < 0;
+    }
+
+    public function expiresSoon()
+    {
+      return $this->getDaysBeforeExpires() < 5;
+    }
+
+    public function getDaysBeforeExpires()
+    {
+      return ceil(($this->getExpiresAt()->format('U') - time()) / 86400);
+    }
+    
+    public function publish()
+    {
+      $this->setIsActivated(true);
     }
 }

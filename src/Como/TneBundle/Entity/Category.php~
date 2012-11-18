@@ -173,4 +173,38 @@ class Category
         // Add your code here
 	$this->slug = Tne::slugify($this->getName());
     }
+    /**
+     *   
+     */
+    public function __toString(){
+       return $this->getName();
+    }
+    
+    private $active_jobs;
+ 
+  // ...
+ 
+  public function setActiveJobs($jobs)
+  {
+    $this->active_jobs = $jobs;
+  }
+ 
+  public function getActiveJobs()
+  {
+    return $this->active_jobs;
+  }
+  
+    private $more_jobs;
+ 
+    // ...
+ 
+    public function setMoreJobs($jobs)
+    {
+      $this->more_jobs = $jobs >=  0 ? $jobs : 0;
+    }
+
+    public function getMoreJobs()
+    {
+      return $this->more_jobs;
+    }
 }

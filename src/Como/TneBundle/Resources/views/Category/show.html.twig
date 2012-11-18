@@ -12,7 +12,7 @@
 {% block content %}
   <div class="category">
     
-    <h1>{{ category.name }}</h1>
+    <h4>Category : {{ category.name }}</h4>
   </div>
  
   {% include 'ComoTneBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}

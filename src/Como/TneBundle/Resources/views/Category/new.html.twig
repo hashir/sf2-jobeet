@@ -1,23 +1,17 @@
 {% extends 'ComoTneBundle::layout.html.twig' %}
 
-{% block headline %}Jobbet Job Board{% endblock headline %}
+{% block headline %}Category creation{% endblock headline %}
 
 {% block content %}
 
-<h1>Category creation</h1>
 
-<form action="{{ path('category_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('category_create') }}" method="post" {{ form_enctype(form) }} class="well">
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+
+    <legend></legend>
+              <button type="submit" class="btn  btn-inverse">Create</button>
+              <a href="{{ path('category') }}" class="btn  btn-inverse">Cancel</a>
+    
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('category') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock content %}

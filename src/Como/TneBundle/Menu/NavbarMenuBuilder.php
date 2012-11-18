@@ -37,16 +37,17 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
         $menu->setChildrenAttribute('class', 'nav pull-right');
 
         // ... add theme change
-        if ($securityContext->isGranted('IS_FULLY_AUTHENTICATED'))
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY'))
         {
-            $dropdown = $this->createDropdownMenuItem($menu, "Users", true, array('icon' => 'caret'));
+            $dropdown = $this->createDropdownMenuItem($menu, "User", true, array('icon' => 'caret'));
             $dropdown->addChild('Profile', array('route' => 'fos_user_profile_show'))->setAttribute('divider_append', true);
             $dropdown->addChild('Logout', array('route' => 'fos_user_security_logout'));
         }
         else
         {
             $dropdown = $this->createDropdownMenuItem($menu, "Users", true, array('icon' => 'caret'));
-            $dropdown->addChild('Logout', array('route' => 'fos_user_security_logout'));
+            $dropdown->addChild('Login', array('route' => 'fos_user_security_login'));
+            $dropdown->addChild('Register', array('route' => 'fos_user_registration_register'));
         }
 
         return $menu;
