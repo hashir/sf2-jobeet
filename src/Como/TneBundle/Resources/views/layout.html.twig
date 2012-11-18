@@ -6,6 +6,10 @@
 
 {% block title %}Como Tne Bundle{% endblock title %}
 
+{% block body_tag %}
+    <body data-spy="scroll" style="background-color: white; background-image: url({{asset('bundles/comotne/images/pattern1.png') }})">
+{% endblock body_tag %}
+
 {% block body %}
 {% block navbar %}
    {{ mopa_bootstrap_navbar('frontendNavbar') }}
@@ -23,12 +27,15 @@
                         <img src="{{ asset('bundles/comotne/images/logo.jpg') }}" alt="Jobeet Job Board" />
                       </a>
                 </div>
-                <div class="span6" style="text-align: right;">
-                    <h1>  <a href="{{ path('job_new') }}">Post a Job</a> </h1>
-                </div>
+                <div class="span6" style="text-align: right; vertical-align:middle">
+                    <h4>  <a href="{{ path('job_new') }}">Post a Job</a> </h4>
+                </div>                                
+            </div><br />
+            <div class="row-fluid" > 
+                <form class="form-search">
+                  <input type="text" class="span12 search-query" placeholder="Search Your Jobs here ...">                  
+                </form>
             </div>
-            
-            
 
             <div class="row-fluid">
                     <!--   content starts --->
@@ -38,13 +45,13 @@
                         </div>                      
 
                         {% block flashes %}
-                        {% if app.session.flashbag.peekAll|length > 0 %}
+                        {#% if app.session.flashbag.peekAll|length > 0 %}
                         <div class="row-fluid">
                             <div class="span12">
-                            {#{ session_flash() }#}
+                            {{ session_flash() }}
                             </div>
                         </div>
-                        {% endif %}
+                        {% endif %#}
                         {% endblock flashes %}
 
                         {% block content %}
