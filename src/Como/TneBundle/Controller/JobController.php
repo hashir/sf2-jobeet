@@ -21,6 +21,7 @@ class JobController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $format = $this->getRequest()->getRequestFormat();
 
 //        $entities = $em->getRepository('ComoTneBundle:Job')->findAll();
          $categories = $em->getRepository('ComoTneBundle:Category')->getWithJobs();
@@ -32,8 +33,10 @@ class JobController extends Controller
           }
 
 
-        return $this->render('ComoTneBundle:Job:index.html.twig', array(
+        return $this->render('ComoTneBundle:Job:index.'.$format.'.twig', array(
             'categories' => $categories,
+            'lastUpdated' => $em->getRepository('ComoTneBundle:Job')->getLatestPost()->getCreatedAt()->format(DATE_ATOM),
+            'feedId' => sha1($this->get('router')->generate('job', array('_format'=> 'atom'), true)),
         ));
     }
 

@@ -2,7 +2,7 @@
     {% if category %}
         <thead>
         <tr><th colspan="4"><a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}">{{ category.name }}</a>
-                            <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug }) }}" class="pull-right">Feed</a>
+                            <a href="{{ path('ComoTneBundle_category', { 'slug': category.slug, '_format': 'atom' }) }}" class="pull-right">Feed</a>
         </th></tr>
         </thead>
     {% endif %}

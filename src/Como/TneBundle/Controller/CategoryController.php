@@ -36,7 +36,8 @@ class CategoryController extends Controller
     public function showAction($slug, $page)
     {
       $em = $this->getDoctrine()->getEntityManager();
-
+      $format = $this->getRequest()->getRequestFormat();
+      
       $category = $em->getRepository('ComoTneBundle:Category')->findOneBySlug($slug);
 
       if (!$category) {
@@ -51,13 +52,14 @@ class CategoryController extends Controller
 
       $category->setActiveJobs($em->getRepository('ComoTneBundle:Job')->getActiveJobs($category->getId(), $jobs_per_page, ($page - 1) * $jobs_per_page));
 
-      return $this->render('ComoTneBundle:Category:show.html.twig', array(
+      return $this->render('ComoTneBundle:Category:show.'.$format.'.twig', array(
         'category' => $category,
         'last_page' => $last_page,
         'previous_page' => $previous_page,
         'current_page' => $page,
         'next_page' => $next_page,
-        'total_jobs' => $total_jobs
+        'total_jobs' => $total_jobs,
+        'feedId' => sha1($this->get('router')->generate('ComoTneBundle_category', array('slug' =>  $category->getSlug(), '_format' => 'atom'), true)),
       ));
     }
 
