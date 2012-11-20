@@ -3,3 +3,4 @@ app/cache/*
 app/logs/*
 web/uploads/*
 vendor/*
+src/Como/TneBundle/Zend/job.dev.index/*
