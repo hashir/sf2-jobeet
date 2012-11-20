@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new Como\UserBundle\ComoUserBundle(),
+            new Como\SearchBundle\ComoSearchBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,5 @@
+#imports:
+#    - { resource: services.yml }
 parameters:
 #    como_tne.example.class: Como\TneBundle\Example
 
@@ -37,14 +39,4 @@ services:
         arguments: ['@request', "@security.context"]
         scope: request
         tags:
-            - { name: knp_menu.menu, alias: main }
-            
-    lucene.listener:
-        class: Como\TneBundle\Listener\Indexer
-        arguments: ["@search_indexer", { objects1: [job, category] } ]
-#          - { objects1: {job, category} }
-        tags:
-            - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
-            
-    search_indexer:
-        class: Como\TneBundle\Utils\Tne
+            - { name: knp_menu.menu, alias: main }               

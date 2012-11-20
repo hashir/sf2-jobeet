@@ -1,3 +1,7 @@
+como_search:
+    resource: "@ComoSearchBundle/Resources/config/routing.yml"
+    prefix:   /
+
 como_user:
     resource: "@ComoUserBundle/Resources/config/routing.yml"
     prefix:   /
