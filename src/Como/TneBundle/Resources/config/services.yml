@@ -10,7 +10,7 @@ services:
         class: '%mopa_bootstrap.navbar.generic%'
         scope: request
         arguments:
-            - { leftmenu: @comotne.navbar_main_menu=, rightmenu: @comotne.navbar_right_menu= }
+            - { leftmenu: '@comotne.navbar_main_menu', rightmenu: '@comotne.navbar_right_menu' }
             - {}
             - { title: "Como Tne", titleRoute: "job", fixedTop: false, isFluid: true }
         tags:
@@ -38,3 +38,13 @@ services:
         scope: request
         tags:
             - { name: knp_menu.menu, alias: main }
+            
+    lucene.listener:
+        class: Como\TneBundle\Listener\Indexer
+        arguments: ["@search_indexer", { objects1: [job, category] } ]
+#          - { objects1: {job, category} }
+        tags:
+            - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
+            
+    search_indexer:
+        class: Como\TneBundle\Utils\Tne
