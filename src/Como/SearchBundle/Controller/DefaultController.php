@@ -15,32 +15,34 @@ class DefaultController extends Controller
     public function searchAction($name)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $resultEntities = $this->container->getParameter('como.index.results');
+
+        foreach ($resultEntities as $ent):
+            foreach ($ent as $e):
+                $resultEntity[] = $e;
+            endforeach;
+        endforeach;
+
+        foreach ($resultEntity as $res) {
+            $hits[$res] = Search::getLuceneIndex($res)->find($name);
+        }
         
-        $hits = Search::getLuceneIndex()->find($name);
+        $pks = array();
+        foreach ($hits as $key => $hit) {
+            foreach ($hit as $h)
+                $pks[$key][] = $h->pk;
+        }
 
-          $pks = array();
-          foreach ($hits as $hit)
-          {
-            $pks[] = $hit->pk;
-          }
-
-          if (empty($pks))
-          {
-            $results= '';
-          }else{
-              
-          
-            $query = $em->getRepository('\Como\TneBundle\Entity\Job')->createQueryBuilder('j')
-            ->where('j.expires_at > :date')
-            ->setParameter('date', date('Y-m-d H:i:s', time()))
-            ->andWhere('j.is_activated = :activated')
-            ->setParameter('activated', 1)
-            ->andWhere('j.id IN ( :pks )')        
-            ->setParameter('pks',$pks)
-            ->getQuery();
-            
-            $results = $query->getResult();
-          }
-        return $this->render('ComoSearchBundle:Default:search.html.twig', array('results' => $results));
+        if (empty($pks)) {
+            $results = '';
+        } else {
+            $results = $pks; 
+        }
+//        return $this->render('ComoSearchBundle:Default:search.html.twig', array('results' => $results));
+        
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($results));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 }

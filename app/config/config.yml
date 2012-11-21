@@ -65,7 +65,12 @@ swiftmailer:
 parameters:
     max_jobs_on_homepage: 5
     max_jobs_on_category: 20
-    
+# ComoSearchBundle Prameters        
+    como.index.entities:
+      - { Job: [position, company, location, description] }
+      - { Category: [name] }
+    como.index.results:      
+      - [ Job, Category ]
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
