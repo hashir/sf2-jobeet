@@ -32,12 +32,12 @@
                 </div>                                
             </div><br />
             <div class="row-fluid" > 
-                <form class="form-search">
-                  <input type="text" class="span12 search-query" placeholder="Search Your Jobs here ...">                  
+                <form class="form-search" id="search_form" action="/tneexrc/web/app_dev.php/ajax/search" method="get">
+                  <input type="text" name="query" id="search_form_text" class="span12 search-query" placeholder="Search Your Jobs here ...">                  
                 </form>
             </div>
 
-            <div class="row-fluid">
+            <div class="row-fluid" id="output">
                     <!--   content starts --->
                         
                         <div class="row-fluid">
@@ -97,5 +97,6 @@
     %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/comotne/js/ajax_search.js') }}"></script>
 {% endblock foot_script %}
 {% endblock body %}      

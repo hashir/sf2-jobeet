@@ -101,4 +101,28 @@ class JobRepository extends EntityRepository
 
         return $job;
     }
+    
+    /**
+     * searchByQuery is for Ajax search
+     */
+    public function searchByQuery($query){
+        
+        $qry = $this->createQueryBuilder('j')
+          ->select('j.id, j.company, j.position, j.location, j.description')
+          ->andWhere('j.expires_at > :date')
+          ->setParameter('date', date('Y-m-d H:i:s', time()))
+          ->andWhere('j.is_activated = :activated')
+          ->setParameter('activated', 1)
+          ->andWhere("j.company LIKE '%{$query}%' OR j.position  LIKE '%{$query}%' OR j.location  LIKE '%{$query}%' OR j.description  LIKE '%{$query}%'")
+
+          ->getQuery();
+
+        try {
+          $job = $qry->getResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+          $job = null;
+        }
+
+        return $job;
+    }
 }

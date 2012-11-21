@@ -20,4 +20,17 @@ class CategoryRepository extends EntityRepository
  
     return $query->getResult();
   }
+  /**
+   * searchByQuery is for Ajax search
+   */
+  public function searchByQuery($query)
+  {
+//        $query = '"%'.$query.'%"';
+        $qry = $this->getEntityManager()->createQuery(
+          "SELECT c.name FROM ComoTneBundle:Category c WHERE c.name LIKE '%{$query}%'")
+//        ->setParameter('query',$query)
+                ;
+
+        return $qry->getResult();
+  }
 }

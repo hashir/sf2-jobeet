@@ -3,6 +3,7 @@
 namespace Como\SearchBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Como\SearchBundle\Utils\Search as Search;
 
 class DefaultController extends Controller
@@ -41,8 +42,7 @@ class DefaultController extends Controller
         }
 //        return $this->render('ComoSearchBundle:Default:search.html.twig', array('results' => $results));
         
-        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($results));
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new Response(json_encode($results),200,array('Content-Type'=>'application/json'));
         return $response;
     }
 }

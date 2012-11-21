@@ -17,3 +17,7 @@ ComoTneBundle_job_category:
 ComoTneBundle_category:
     pattern:  /category/{slug}/{page}
     defaults: { _controller: ComoTneBundle:Category:show, page: 1 }
+    
+search_ajax:
+  pattern: /ajax/search/{query}
+  defaults: { _controller: "ComoTneBundle:Job:search" }

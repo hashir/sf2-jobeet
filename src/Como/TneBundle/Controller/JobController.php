@@ -4,6 +4,8 @@ namespace Como\TneBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Como\TneBundle\Utils\Tne as Tne;
 
 use Como\TneBundle\Entity\Job;
 use Como\TneBundle\Form\JobType;
@@ -261,5 +263,33 @@ class JobController extends Controller
         ->add('token', 'hidden')
         ->getForm()
       ;
+    }
+    
+    /**
+     * Search Ajax action
+     */
+    public function searchAction($query)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $format = $this->getRequest()->getRequestFormat();
+        
+        $jobEntities = $em->getRepository('ComoTneBundle:Job')->searchByQuery($query);
+        foreach($jobEntities as $ent){
+            $location_s = Tne::slugify($ent['location']);
+            $position_s = Tne::slugify($ent['position']);
+            $company_s  = Tne::slugify($ent['company']);
+            $entarr[] = array(
+                    'location'  => $ent['location'],
+                    'position'  => $ent['position'],
+                    'company'   => $ent['company'],
+                    'ref'       => $ent['id'],
+                    'location_s'=> $location_s,
+                    'position_s'=> $position_s,
+                    'company_s' => $company_s,
+                );
+        }
+        $response = new Response(json_encode($entarr),200,array('Content-Type'=>'application/json'));
+        return $response;
+
     }
 }
