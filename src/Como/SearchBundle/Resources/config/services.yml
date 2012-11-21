@@ -1,0 +1,15 @@
+parameters:
+#    como_search.example.class: Como\SearchBundle\Example
+
+services:
+#    como_search.example:
+#        class: %como_search.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    lucene.listener:
+            class: Como\SearchBundle\Listener\Indexer
+            arguments: ["@search_indexer", { SearchEntities: [Job, Category] } ]
+            tags:
+                - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
+
+    search_indexer:
+        class: Como\SearchBundle\Utils\Search
