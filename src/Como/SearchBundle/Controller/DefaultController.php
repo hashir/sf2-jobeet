@@ -24,8 +24,21 @@ class DefaultController extends Controller
                 $resultEntity[] = $e;
             endforeach;
         endforeach;
-
+/**
+ * Lucene search......
+ *
+        set_include_path(get_include_path().PATH_SEPARATOR.'/home/hashir/projects/tneexrc/src/Como/SearchBundle/');
+        require_once  __DIR__.'/../Zend/Search/Lucene/Search/QueryParser.php';
+        
+        $luceneQueryString = strtolower($name);
+        $luceneQuery = \Zend_Search_Lucene_Search_QueryParser::parse($luceneQueryString, 'utf-8');
+        $lq = new \Zend_Search_Lucene_Search_Query_Boolean();
+        $lq->addSubquery($luceneQuery, true);
+ * 
+ */
+     
         foreach ($resultEntity as $res) {
+            
             $hits[$res] = Search::getLuceneIndex($res)->find($name);
         }
         

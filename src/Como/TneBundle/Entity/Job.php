@@ -612,6 +612,11 @@ class Job
     {
       return $this->getDaysBeforeExpires() < 0;
     }
+    
+    public function getIsExpired()
+    {
+      return $this->isExpired();
+    }
 
     public function expiresSoon()
     {

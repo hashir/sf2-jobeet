@@ -36,7 +36,7 @@ class Search
       return __DIR__.'/../Zend/'.$name.'.index';
     }
     
-    public function updateLuceneIndex($entity, $name, $args)
+    public function updateLuceneIndex($entity, $name, $args, $index_flag)
     {   
       $index = self::getLuceneIndex($name);
 
@@ -47,7 +47,8 @@ class Search
       {
         $index->delete($hit->id);
       }
-
+      
+      if(!$index_flag) return;
       /**
        *  don't index expired and non-activated result
        *
