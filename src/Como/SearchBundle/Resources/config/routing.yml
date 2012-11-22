@@ -1,3 +1,7 @@
 como_search_homepage:
     pattern:  /search/{name}
     defaults: { _controller: ComoSearchBundle:Default:search }
+
+como_feed_page:
+    pattern:  /feed/
+    defaults: { _controller: como.feed:generateFeed }

@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new Como\UserBundle\ComoUserBundle(),
             new Como\SearchBundle\ComoSearchBundle(),
+            new Como\FeedBundle\ComoFeedBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

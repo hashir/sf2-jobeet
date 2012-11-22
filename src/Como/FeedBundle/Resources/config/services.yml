@@ -1,0 +1,21 @@
+parameters:
+    como.feed.class: Como\FeedBundle\Controller\DefaultController
+    
+    como.feed.entities:
+      - { 'ComoTneBundle:Job': [position, company, location, description, created_at] }
+      - { 'ComoTneBundle:Category': [name] }
+    
+    como.feed.constraints:      
+      - { 'ComoTneBundle:Job': {is_activated: 0 } }
+      
+    como.feed.format: [ atom ]
+#    como_feed.example.class: Como\FeedBundle\Example
+
+services:
+  
+  como.feed:
+    class: %como.feed.class%
+    arguments: [%como.feed.entities%, %como.feed.constraints%,"@doctrine.orm.entity_manager",%como.feed.format%]
+#    como_feed.example:
+#        class: %como_feed.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

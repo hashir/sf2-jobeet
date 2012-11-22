@@ -1,0 +1,3 @@
+como_feed_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ComoFeedBundle:Default:index }
