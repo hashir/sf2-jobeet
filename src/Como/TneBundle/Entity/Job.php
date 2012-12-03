@@ -632,4 +632,8 @@ class Job
     {
       $this->setIsActivated(true);
     }
+    
+    public function __toString(){
+       return $this->getPosition().', '.$this->getLocation();
+    }
 }

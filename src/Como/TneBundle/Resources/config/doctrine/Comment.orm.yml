@@ -1,0 +1,32 @@
+Como\TneBundle\Entity\Comment:
+  type: entity
+  table: Comment
+  repositoryClass: Como\TneBundle\Repository\CommentRepository
+  fields:
+    id:
+        type: integer
+        id: true
+        generator:
+            strategy: AUTO
+
+    comment:
+      type: string
+      length: 750
+      nullable: true
+    user_id:
+      type: integer
+    job_id:
+      type: integer  
+  manyToOne:
+    user:
+      targetEntity: Como\UserBundle\Entity\User
+      inversedBy: Comments
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+    job:
+      targetEntity: Job
+      inversedBy: Comments
+      joinColumn:
+        name: job_id
+        referencedColumnName: id

@@ -39,7 +39,7 @@ class Indexer {
                }
             }            
         }
-        
+         if($index_flag)
          $this->Search->updateLuceneIndex($entity, $ent, $this->args[$ent],$index_flag); 
    }
    
@@ -62,7 +62,7 @@ class Indexer {
                }
             }            
         }
-        
+         if($index_flag)
          $this->Search->updateLuceneIndex($entity, $ent, $this->args[$ent],$index_flag); 
    }
     

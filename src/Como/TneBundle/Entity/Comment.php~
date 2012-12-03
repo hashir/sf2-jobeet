@@ -1,0 +1,167 @@
+<?php
+
+namespace Como\TneBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comment
+ */
+class Comment
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     */
+    private $user_id;
+
+    /**
+     * @var integer
+     */
+    private $job_id;
+
+    /**
+     * @var \Como\TneBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * @var \Como\TneBundle\Entity\Job
+     */
+    private $job;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set user_id
+     *
+     * @param integer $userId
+     * @return Comment
+     */
+    public function setUserId($userId)
+    {
+        $this->user_id = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get user_id
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * Set job_id
+     *
+     * @param integer $jobId
+     * @return Comment
+     */
+    public function setJobId($jobId)
+    {
+        $this->job_id = $jobId;
+    
+        return $this;
+    }
+
+    /**
+     * Get job_id
+     *
+     * @return integer 
+     */
+    public function getJobId()
+    {
+        return $this->job_id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Como\TneBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\Como\TneBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Como\TneBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set job
+     *
+     * @param \Como\TneBundle\Entity\Job $job
+     * @return Comment
+     */
+    public function setJob(\Como\TneBundle\Entity\Job $job = null)
+    {
+        $this->job = $job;
+    
+        return $this;
+    }
+
+    /**
+     * Get job
+     *
+     * @return \Como\TneBundle\Entity\Job 
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+}
