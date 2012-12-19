@@ -26,7 +26,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+//            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new Como\UserBundle\ComoUserBundle(),
 //            new Como\SearchBundle\ComoSearchBundle(),
