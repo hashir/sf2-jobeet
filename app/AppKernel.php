@@ -38,8 +38,8 @@ class AppKernel extends Kernel
             
             new Sonata\PageBundle\SonataPageBundle(),
             new Application\Sonata\PageBundle\ApplicationSonataPageBundle(),
-            new Sonata\NewsBundle\SonataNewsBundle(),
-            new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
+//            new Sonata\NewsBundle\SonataNewsBundle(),
+//            new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             
@@ -47,7 +47,7 @@ class AppKernel extends Kernel
             new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Sonata\IntlBundle\SonataIntlBundle(),
+//            new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Sonata\CacheBundle\SonataCacheBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),

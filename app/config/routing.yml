@@ -75,6 +75,6 @@ sonata_page_cache:
     resource: '@SonataPageBundle/Resources/config/routing/cache.xml'
     prefix: / 
 
-news:
-    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
-    prefix: /news    
+#news:
+#    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+#    prefix: /news    
