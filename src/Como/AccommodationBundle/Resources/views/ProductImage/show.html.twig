@@ -1,0 +1,65 @@
+<h1>ProductImage</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Market_variant_name</th>
+            <td>{{ entity.marketvariantname }}</td>
+        </tr>
+        <tr>
+            <th>Multimedia_id</th>
+            <td>{{ entity.multimediaid }}</td>
+        </tr>
+        <tr>
+            <th>Server_path</th>
+            <td>{{ entity.serverpath }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_multimedia_file</th>
+            <td>{{ entity.attributeidmultimediafile }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_multimedia_content</th>
+            <td>{{ entity.attributeidmultimediacontent }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_size_orientation</th>
+            <td>{{ entity.attributeidsizeorientation }}</td>
+        </tr>
+        <tr>
+            <th>Width</th>
+            <td>{{ entity.width }}</td>
+        </tr>
+        <tr>
+            <th>Height</th>
+            <td>{{ entity.height }}</td>
+        </tr>
+        <tr>
+            <th>Alt_text</th>
+            <td>{{ entity.alttext }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('productimage') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('productimage_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('productimage_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

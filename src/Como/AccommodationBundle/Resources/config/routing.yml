@@ -1,0 +1,11 @@
+como_accommodation_homepage:
+    pattern:  /accomm
+    defaults: { _controller: ComoAccommodationBundle:Default:index }
+    
+ComoAccommodationBundle_product:
+    resource: "@ComoAccommodationBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+    
+ComoAccommodationBundle_productimage:
+    resource: "@ComoAccommodationBundle/Resources/config/routing/productimage.yml"
+    prefix:   /productimage    

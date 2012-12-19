@@ -1,0 +1,268 @@
+#
+# more information can be found here http://sonata-project.org/bundles/media
+#
+
+
+sonata_media:
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb
+    contexts:
+        news:
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 150 , quality: 95}
+                big:   { width: 500 , quality: 90}
+                
+        default:  # the default context is mandatory
+            download:
+                strategy: sonata.media.security.superadmin_strategy
+                mode: http
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+    providers:
+        file:
+
+            service:              sonata.media.provider.file
+
+            resizer:              false
+
+            filesystem:           sonata.media.filesystem.local
+
+            cdn:                  sonata.media.cdn.server
+
+            generator:            sonata.media.generator.default
+
+            thumbnail:            sonata.media.thumbnail.format
+
+            allowed_extensions:
+
+
+
+                # Defaults:
+
+                - pdf
+
+                - txt
+
+                - rtf
+
+                - doc
+
+                - docx
+
+                - xls
+
+                - xlsx
+
+                - ppt
+
+                - pttx
+
+                - odt
+
+                - odg
+
+                - odp
+
+                - ods
+
+                - odc
+
+                - odf
+
+                - odb
+
+                - csv
+
+                - xml
+
+            allowed_mime_types:
+
+
+
+                # Defaults:
+
+                - application/pdf
+
+                - application/x-pdf
+
+                - application/rtf
+
+                - text/html
+
+                - text/rtf
+
+                - text/plain
+
+                - application/excel
+
+                - application/msword
+
+                - application/vnd.ms-excel
+
+                - application/vnd.ms-powerpoint
+
+                - application/vnd.ms-powerpoint
+
+                - application/vnd.oasis.opendocument.text
+
+                - application/vnd.oasis.opendocument.graphics
+
+                - application/vnd.oasis.opendocument.presentation
+
+                - application/vnd.oasis.opendocument.spreadsheet
+
+                - application/vnd.oasis.opendocument.chart
+
+                - application/vnd.oasis.opendocument.formula
+
+                - application/vnd.oasis.opendocument.database
+
+                - application/vnd.oasis.opendocument.image
+
+                - text/comma-separated-values
+
+                - text/xml
+
+                - application/xml
+
+                - application/zip      
+        image:
+
+            service:              sonata.media.provider.image
+
+            resizer:              sonata.media.resizer.simple
+
+            filesystem:           sonata.media.filesystem.local
+
+            cdn:                  sonata.media.cdn.server
+
+            generator:            sonata.media.generator.default
+
+            thumbnail:            sonata.media.thumbnail.format
+
+            adapter:              sonata.media.adapter.image.gd
+
+            allowed_extensions:
+
+
+
+                # Defaults:
+
+                - jpg
+
+                - png
+
+            allowed_mime_types:
+
+
+
+                # Defaults:
+
+                - image/pjpeg
+
+                - image/jpeg
+
+                - image/png
+
+                - image/x-png
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false
+
+
+
+#sonata_media:
+#    db_driver:       doctrine_orm # | doctrine_mongodb
+#    default_context: default
+#    contexts:
+#        default:  # the default context is mandatory
+#            download:
+#                mode: http # X-Sendfile | http
+#            providers:
+#                - sonata.media.provider.dailymotion
+#                - sonata.media.provider.youtube
+#                - sonata.media.provider.image
+#                - sonata.media.provider.file
+#                - sonata.media.provider.vimeo
+#
+#            formats:
+#                small: { width: 100, quality: 100}
+#                big:   { width: 820 , quality: 100}
+#
+#        news:
+#            providers:
+#                - sonata.media.provider.image
+#
+#            formats:
+#                abtract: { width: 100, quality: 100}
+#                wide:    { width: 820 , quality: 100}
+#
+#    cdn:
+#        # define the public base url for the uploaded media
+#        server:
+#            path:      %sonata_media.cdn.host%
+#
+#    filesystem:
+#        # define where the uploaded file will be stored
+#        local:
+#            directory:  %kernel.root_dir%/../web/uploads/media
+#            create:     true
+#
+#    providers:
+#        file:
+#            resizer:    false
+#
+#    pixlr:
+#        enabled:  true
+#        referrer: Demo - Sonata Project
+#
+#    resizer:
+#        simple:
+##            mode:  outbound
+#            mode:  inset
+
+#
+# The LiipImagineBundle can be used if you want to convert on demand an image
+# to a specific format. (ie a controller render the file)
+#    more information can be found here : https://github.com/liip/LiipImagineBundle
+#
+#liip_imagine:
+#    filter_sets:
+#        default_small:
+#            quality: 75
+#            controller_action: 'SonataMediaBundle:Media:liipImagineFilter'
+#            filters:
+#                thumbnail: { size: [100, 70], mode: outbound }
+#
+#
+#        default_big:
+#            quality: 75
+#            controller_action: 'SonataMediaBundle:Media:liipImagineFilter'
+#            filters:
+#                thumbnail: { size: [500, 70], mode: outbound }
+
+# Enable Doctrine to map the provided entities
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataMediaBundle: ~
+                    SonataMediaBundle: ~

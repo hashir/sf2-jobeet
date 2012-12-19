@@ -1,0 +1,119 @@
+<h1>Product list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product_id</th>
+            <th>Delete_indicator</th>
+            <th>International_ready_flag</th>
+            <th>National_head_office_flag</th>
+            <th>Product_category_id</th>
+            <th>Owning_organisation_id</th>
+            <th>Contributing_organisation_id</th>
+            <th>Market_variant_id</th>
+            <th>Product_name</th>
+            <th>Children_catered_for_flag</th>
+            <th>Pets_allowed_flag</th>
+            <th>Disabled_access_flag</th>
+            <th>Brochure_available_flag</th>
+            <th>Validity_date_from</th>
+            <th>Validity_date_to</th>
+            <th>Attribute_id_atdw_status</th>
+            <th>Attribute_id_atdw_status_description</th>
+            <th>Atdw_expiry_date</th>
+            <th>Free_entry_flag</th>
+            <th>Attribute_id_currency</th>
+            <th>Attribute_id_currency_description</th>
+            <th>Attribute_id_rate_basis</th>
+            <th>Attribute_id_rate_basis_description</th>
+            <th>Rate_from</th>
+            <th>Rate_to</th>
+            <th>City_name</th>
+            <th>State_name</th>
+            <th>Country_name</th>
+            <th>Domestic_region_name</th>
+            <th>Product_description</th>
+            <th>Max_star_rating</th>
+            <th>Product_classification_match</th>
+            <th>Product_classifications</th>
+            <th>Service_classification_match</th>
+            <th>Service_classifications</th>
+            <th>Product_attribute_match</th>
+            <th>Product_attributes</th>
+            <th>Service_attribute_match</th>
+            <th>Service_attributes</th>
+            <th>Relevance</th>
+            <th>Total_criteria</th>
+            <th>Percent_relevance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('product_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.productid }}</td>
+            <td>{{ entity.deleteindicator }}</td>
+            <td>{{ entity.internationalreadyflag }}</td>
+            <td>{{ entity.nationalheadofficeflag }}</td>
+            <td>{{ entity.productcategoryid }}</td>
+            <td>{{ entity.owningorganisationid }}</td>
+            <td>{{ entity.contributingorganisationid }}</td>
+            <td>{{ entity.marketvariantid }}</td>
+            <td>{{ entity.productname }}</td>
+            <td>{{ entity.childrencateredforflag }}</td>
+            <td>{{ entity.petsallowedflag }}</td>
+            <td>{{ entity.disabledaccessflag }}</td>
+            <td>{{ entity.brochureavailableflag }}</td>
+            <td>{% if entity.validitydatefrom %}{{ entity.validitydatefrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.validitydateto %}{{ entity.validitydateto|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.attributeidatdwstatus }}</td>
+            <td>{{ entity.attributeidatdwstatusdescription }}</td>
+            <td>{% if entity.atdwexpirydate %}{{ entity.atdwexpirydate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.freeentryflag }}</td>
+            <td>{{ entity.attributeidcurrency }}</td>
+            <td>{{ entity.attributeidcurrencydescription }}</td>
+            <td>{{ entity.attributeidratebasis }}</td>
+            <td>{{ entity.attributeidratebasisdescription }}</td>
+            <td>{{ entity.ratefrom }}</td>
+            <td>{{ entity.rateto }}</td>
+            <td>{{ entity.cityname }}</td>
+            <td>{{ entity.statename }}</td>
+            <td>{{ entity.countryname }}</td>
+            <td>{{ entity.domesticregionname }}</td>
+            <td>{{ entity.productdescription }}</td>
+            <td>{{ entity.maxstarrating }}</td>
+            <td>{{ entity.productclassificationmatch }}</td>
+            <td>{{ entity.productclassifications }}</td>
+            <td>{{ entity.serviceclassificationmatch }}</td>
+            <td>{{ entity.serviceclassifications }}</td>
+            <td>{{ entity.productattributematch }}</td>
+            <td>{{ entity.productattributes }}</td>
+            <td>{{ entity.serviceattributematch }}</td>
+            <td>{{ entity.serviceattributes }}</td>
+            <td>{{ entity.relevance }}</td>
+            <td>{{ entity.totalcriteria }}</td>
+            <td>{{ entity.percentrelevance }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('product_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('product_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('product_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

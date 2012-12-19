@@ -1,0 +1,30 @@
+productimage:
+    pattern:  /
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:index" }
+
+productimage_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:show" }
+
+productimage_new:
+    pattern:  /new
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:new" }
+
+productimage_create:
+    pattern:  /create
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:create" }
+    requirements: { _method: post }
+
+productimage_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:edit" }
+
+productimage_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:update" }
+    requirements: { _method: post }
+
+productimage_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ComoAccommodationBundle:ProductImage:delete" }
+    requirements: { _method: post }

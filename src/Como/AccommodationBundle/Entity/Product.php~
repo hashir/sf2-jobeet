@@ -1,0 +1,12 @@
+<?php
+
+namespace Como\AccommodationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Product
+ */
+class Product
+{
+}

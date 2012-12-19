@@ -33,7 +33,7 @@ class Search
 
     static public function getLuceneIndexFile($name)
     {       
-      return __DIR__.'/../Zend/'.$name.'.index';
+      return __DIR__.'/../Resources/public/indexes/'.$name.'.index';
     }
     
     public function updateLuceneIndex($entity, $name, $args, $index_flag)

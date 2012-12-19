@@ -1,0 +1,197 @@
+<h1>Product</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Product_id</th>
+            <td>{{ entity.productid }}</td>
+        </tr>
+        <tr>
+            <th>Delete_indicator</th>
+            <td>{{ entity.deleteindicator }}</td>
+        </tr>
+        <tr>
+            <th>International_ready_flag</th>
+            <td>{{ entity.internationalreadyflag }}</td>
+        </tr>
+        <tr>
+            <th>National_head_office_flag</th>
+            <td>{{ entity.nationalheadofficeflag }}</td>
+        </tr>
+        <tr>
+            <th>Product_category_id</th>
+            <td>{{ entity.productcategoryid }}</td>
+        </tr>
+        <tr>
+            <th>Owning_organisation_id</th>
+            <td>{{ entity.owningorganisationid }}</td>
+        </tr>
+        <tr>
+            <th>Contributing_organisation_id</th>
+            <td>{{ entity.contributingorganisationid }}</td>
+        </tr>
+        <tr>
+            <th>Market_variant_id</th>
+            <td>{{ entity.marketvariantid }}</td>
+        </tr>
+        <tr>
+            <th>Product_name</th>
+            <td>{{ entity.productname }}</td>
+        </tr>
+        <tr>
+            <th>Children_catered_for_flag</th>
+            <td>{{ entity.childrencateredforflag }}</td>
+        </tr>
+        <tr>
+            <th>Pets_allowed_flag</th>
+            <td>{{ entity.petsallowedflag }}</td>
+        </tr>
+        <tr>
+            <th>Disabled_access_flag</th>
+            <td>{{ entity.disabledaccessflag }}</td>
+        </tr>
+        <tr>
+            <th>Brochure_available_flag</th>
+            <td>{{ entity.brochureavailableflag }}</td>
+        </tr>
+        <tr>
+            <th>Validity_date_from</th>
+            <td>{{ entity.validitydatefrom|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Validity_date_to</th>
+            <td>{{ entity.validitydateto|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_atdw_status</th>
+            <td>{{ entity.attributeidatdwstatus }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_atdw_status_description</th>
+            <td>{{ entity.attributeidatdwstatusdescription }}</td>
+        </tr>
+        <tr>
+            <th>Atdw_expiry_date</th>
+            <td>{{ entity.atdwexpirydate|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Free_entry_flag</th>
+            <td>{{ entity.freeentryflag }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_currency</th>
+            <td>{{ entity.attributeidcurrency }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_currency_description</th>
+            <td>{{ entity.attributeidcurrencydescription }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_rate_basis</th>
+            <td>{{ entity.attributeidratebasis }}</td>
+        </tr>
+        <tr>
+            <th>Attribute_id_rate_basis_description</th>
+            <td>{{ entity.attributeidratebasisdescription }}</td>
+        </tr>
+        <tr>
+            <th>Rate_from</th>
+            <td>{{ entity.ratefrom }}</td>
+        </tr>
+        <tr>
+            <th>Rate_to</th>
+            <td>{{ entity.rateto }}</td>
+        </tr>
+        <tr>
+            <th>City_name</th>
+            <td>{{ entity.cityname }}</td>
+        </tr>
+        <tr>
+            <th>State_name</th>
+            <td>{{ entity.statename }}</td>
+        </tr>
+        <tr>
+            <th>Country_name</th>
+            <td>{{ entity.countryname }}</td>
+        </tr>
+        <tr>
+            <th>Domestic_region_name</th>
+            <td>{{ entity.domesticregionname }}</td>
+        </tr>
+        <tr>
+            <th>Product_description</th>
+            <td>{{ entity.productdescription }}</td>
+        </tr>
+        <tr>
+            <th>Max_star_rating</th>
+            <td>{{ entity.maxstarrating }}</td>
+        </tr>
+        <tr>
+            <th>Product_classification_match</th>
+            <td>{{ entity.productclassificationmatch }}</td>
+        </tr>
+        <tr>
+            <th>Product_classifications</th>
+            <td>{{ entity.productclassifications }}</td>
+        </tr>
+        <tr>
+            <th>Service_classification_match</th>
+            <td>{{ entity.serviceclassificationmatch }}</td>
+        </tr>
+        <tr>
+            <th>Service_classifications</th>
+            <td>{{ entity.serviceclassifications }}</td>
+        </tr>
+        <tr>
+            <th>Product_attribute_match</th>
+            <td>{{ entity.productattributematch }}</td>
+        </tr>
+        <tr>
+            <th>Product_attributes</th>
+            <td>{{ entity.productattributes }}</td>
+        </tr>
+        <tr>
+            <th>Service_attribute_match</th>
+            <td>{{ entity.serviceattributematch }}</td>
+        </tr>
+        <tr>
+            <th>Service_attributes</th>
+            <td>{{ entity.serviceattributes }}</td>
+        </tr>
+        <tr>
+            <th>Relevance</th>
+            <td>{{ entity.relevance }}</td>
+        </tr>
+        <tr>
+            <th>Total_criteria</th>
+            <td>{{ entity.totalcriteria }}</td>
+        </tr>
+        <tr>
+            <th>Percent_relevance</th>
+            <td>{{ entity.percentrelevance }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('product') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('product_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('product_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

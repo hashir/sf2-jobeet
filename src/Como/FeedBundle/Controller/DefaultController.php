@@ -60,8 +60,11 @@ class DefaultController extends Controller
 
             $result[$table] = $query2->getResult();
         }
-        
-        return new Response(json_encode($result),200,array('Content-Type'=>'application/json'));
+               
+        return $this->render('ComoFeedBundle:Default:feed.'.$this->outputFormat.'.twig', array(
+            'results' => $result
+        ));
+//        return new Response(json_encode($result),200,array('Content-Type'=>'application/json'));
     }
     
     public function indexAction($name)

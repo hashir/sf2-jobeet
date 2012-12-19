@@ -2,9 +2,9 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     localhost
     database_port:     ~
-    database_name:     tne
+    database_name:     sf2
     database_user:     root
-    database_password: ~
+    database_password: password
 
     mailer_transport:  smtp
     mailer_host:       localhost

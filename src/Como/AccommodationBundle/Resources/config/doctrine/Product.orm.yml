@@ -1,0 +1,73 @@
+Como\AccommodationBundle\Entity\Product:
+  type: entity
+  table: Product
+  repositoryClass: Como\AccommodationBundle\Repository\ProductRepository
+  fields:
+    id:
+        type: integer
+        id: true
+        generator:
+            strategy: AUTO
+    product_attr_id: {  type: string(255), nullable: true }
+    delete_indicator: {  type: string(255), nullable: true }
+    international_ready_flag: {  type: string(255), nullable: true }
+    national_head_office_flag: {  type: integer, nullable: true }
+    product_category_id: {  type: string(255), nullable: true }
+    owning_organisation_id: {  type: integer, nullable: true }
+    contributing_organisation_id: {  type: integer, nullable: true }
+    market_variant_id: {  type: string(255), nullable: true }
+    product_name: {  type: string(255), nullable: true }
+    children_catered_for_flag: {  type: integer, nullable: true }
+    pets_allowed_flag: {  type: integer , nullable: true}
+    disabled_access_flag: {  type: integer, nullable: true }
+    brochure_available_flag: {  type: integer, nullable: true }
+    validity_date_from: {  type: date, nullable: true }
+    validity_date_to: {  type: date, nullable: true }
+    attribute_id_atdw_status: {  type: string(255), nullable: true }
+    attribute_id_atdw_status_description: {  type: string(1000), nullable: true }
+    atdw_expiry_date: {  type: date, nullable: true }
+    free_entry_flag: {  type: integer, nullable: true }
+    attribute_id_currency: {  type: string(255), nullable: true }
+    attribute_id_currency_description: {  type: string(1000), nullable: true }
+    attribute_id_rate_basis: {  type: string(255, nullable: true }
+    attribute_id_rate_basis_description: {  type: string(1000), nullable: true }
+    rate_from: {  type: float , nullable: true}
+    rate_to: {  type: float , nullable: true}
+    city_name: {  type: string(255), nullable: true }
+    state_name: {  type: string(255), nullable: true }
+    country_name: {  type: string(255), nullable: true }
+    domestic_region_name: {  type: string(255), nullable: true }
+    product_description: {  type: string(1000), nullable: true }
+    max_star_rating: {  type: integer, nullable: true }
+    product_classification_match: {  type: integer , nullable: true}
+    product_classifications: {  type: integer, nullable: true }
+    service_classification_match: {  type: integer, nullable: true }
+    service_classifications: {  type: integer, nullable: true }
+    product_attribute_match: {  type: integer, nullable: true }
+    product_attributes: {  type: integer, nullable: true }
+    service_attribute_match: {  type: integer, nullable: true }
+    service_attributes: {  type: integer, nullable: true }
+    relevance: {  type: integer, nullable: true }
+    total_criteria: {  type: integer, nullable: true }
+    percent_relevance: {  type: integer, nullable: true } 
+    attribute_id_address: {  type: string(255), nullable: true }
+    attribute_id_address_description: {  type: string(1000), nullable: true }
+    attribute_id_address_description_mv: {  type: string(1000), nullable: true }
+    address_line_1: {  type: string(255), nullable: true }
+    suburb_name: {  type: string(255), nullable: true }
+    city_name: {  type: string(255), nullable: true }
+    area_name: {  type: string(255), nullable: true }
+    state_name: {  type: string(255), nullable: true }
+    country_name: {  type: string(255), nullable: true }
+    address_postal_code: {  type: string(255), nullable: true }
+    same_postal_address_flag: {  type: string(255), nullable: true }
+    override_domestic_region_flag: {  type: string(255), nullable: true }
+    geocode_gda_latitude: {  type: string(255), nullable: true }
+    geocode_gda_longitude: {  type: string(255), nullable: true }
+    attribute_id_geocode_proj_sys: {  type: string(255), nullable: true }
+    attribute_id_geocode_proj_sys_description: {  type: string(1000), nullable: true }
+    attribute_id_geocode_proj_sys_description_mv: {  type: string(1000), nullable: true }
+  oneToMany:
+    productimages:
+      targetEntity: ProductImage
+      mappedBy: product

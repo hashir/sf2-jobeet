@@ -1,0 +1,44 @@
+Como\AccommodationBundle\Entity\ProductImage:
+  type: entity
+  table: productimage
+  repositoryClass: Como\AccommodationBundle\Repository\ProductImageRepository
+  fields:
+    id:
+        type: integer
+        id: true
+        generator:
+            strategy: AUTO
+    market_variant_name:
+      type: string
+      length: 255
+    multimedia_id:
+      type: string
+      length: 255
+    server_path:
+      type: string
+      length: 255
+    attribute_id_multimedia_file:
+      type: string
+      length: 255
+    attribute_id_multimedia_content:
+      type: string
+      length: 255
+    attribute_id_size_orientation:
+      type: string
+      length: 255
+    width:
+      type: string
+      length: 255  
+    height:
+      type: string
+      length: 255  
+    alt_text:
+      type: string
+      length: 255
+  manyToOne:
+    product:
+      targetEntity: Product
+      inversedBy: productimages
+      joinColumn:
+        name: product_id
+        referencedColumnName: id        

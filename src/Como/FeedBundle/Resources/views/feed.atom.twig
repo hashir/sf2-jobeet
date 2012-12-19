@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+{% for result in results %}
+    <entry>
+      <title>{{ result.position }} ({{ result.location }})</title>
+      <id>{{ result.id }}</id>
+      <updated>{{ result.createdAt.format(constant('DATE_ATOM')) }}</updated>
+      <summary type="xhtml">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <div>
+            {{ result.description|nl2br }}
+          </div>
+          <h4>How to apply?</h4>
+          <p>{{ result.howtoapply }}</p>
+        </div>
+      </summary>
+      <author><name>{{ result.company }}</name></author>
+    </entry>
+{% endfor %}
+</feed>

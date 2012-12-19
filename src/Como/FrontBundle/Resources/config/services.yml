@@ -1,0 +1,7 @@
+parameters:
+#    como_front.example.class: Como\FrontBundle\Example
+
+services:
+#    como_front.example:
+#        class: %como_front.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
