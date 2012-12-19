@@ -1,3 +1,7 @@
+como_accomm:
+    pattern: /
+    defaults: { _controller: ComoFrontBundle:Default:index }  
+    
 como_front:
     resource: "@ComoFrontBundle/Resources/config/routing.yml"
     prefix:   /
@@ -21,10 +25,6 @@ como_user:
 #como_tne:
 #    resource: "@ComoTneBundle/Resources/config/routing.yml"
 #    prefix:   /
-
-como_accomm:
-    pattern: /accom
-    defaults: { _controller: ComoFrontBundle:Default:index }    
 
 # Internal routing configuration to handle ESI
 #_internal:
