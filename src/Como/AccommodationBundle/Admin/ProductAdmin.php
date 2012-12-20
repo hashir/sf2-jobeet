@@ -32,12 +32,12 @@ class ProductAdmin extends Admin
                 ->add('product_description', 'text', array('required' => false))
                 ->add('rate_from')
                 ->add('rate_to')
-//                ->add('productimages', 'collection', array(
-//                        'type'          => new \Como\AccommodationBundle\Form\ProductImageType(),
-//                        'allow_add'     => true,
-//                        'allow_delete'  => true,
-//                        'by_reference'  => true,
-//                    ))
+                ->add('productimages', 'collection', array(
+                        'type'          => new \Como\AccommodationBundle\Form\ProductImageType(),
+                        'allow_add'     => true,
+                        'allow_delete'  => true,
+                        'by_reference'  => true,
+                    ))
              ->with('Address', array('collapsed' => true))
                 ->add('attribute_id_address')
                 ->add('address_line_1')

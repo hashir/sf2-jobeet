@@ -2,7 +2,7 @@
 # more information can be found here http://sonata-project.org/bundles/admin
 #
 sonata_admin:
-    title:      ATWD Admin
+    title: ATWD Admin
     title_logo: /bundles/sonataadmin/logo_title.png
     templates:
         # default global templates

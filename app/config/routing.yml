@@ -16,7 +16,7 @@ como_accommodation:
 
 awtd_sync:
     pattern: /awtd/sync
-    defaults: { _controller: ComoAccommodationBundle:ProductAdmin:sync }
+    defaults: { _controller: ComoAccommodationBundle:Product:sync }
   
 como_user:
     resource: "@ComoUserBundle/Resources/config/routing.yml"

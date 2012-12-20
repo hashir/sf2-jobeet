@@ -102,8 +102,8 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
                     $product->setCityName($obj->product_address->row->city_name);
                     $product->setAreaName($obj->product_address->row->area_name);
                     $product->setStateName($obj->product_address->row->state_name);
-                    $product->setStateName($obj->product_address->row->country_name);
-                    $product->setCountryName($obj->product_address->row->address_postal_code);
+                    $product->setCountryName($obj->product_address->row->country_name);
+                    $product->setAddressPostalCode($obj->product_address->row->address_postal_code);
                     $product->setSamePostalAddressFlag($obj->product_address->row->same_postal_address_flag);
                     $product->setOverrideDomesticRegionFlag($obj->product_address->row->override_domestic_region_flag);
                     $product->setGeocodeGdaLatitude($obj->product_address->row->geocode_gda_latitude);
