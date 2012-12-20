@@ -1,7 +1,7 @@
 {% if admin.hasRoute('create') and admin.isGranted('CREATE')%}
     {% if admin.subClasses is empty %}
         <a class="btn sonata-action-element" href="{{ admin.generateUrl('create') }}">{{ 'link_action_create'|trans({}, 'SonataAdminBundle') }}</a>
-        <a class="btn sonata-action-element" href="{{ url('awtd_sync') }}">Sync Data</a>
+        <a class="btn sonata-action-element" href="{{ url('awtd_sync') }}">Sync ATWD Data</a>
     {% else %}
         <span class="btn-group sonata-action-element">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
