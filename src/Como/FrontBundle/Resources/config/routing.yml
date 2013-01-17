@@ -3,5 +3,7 @@ como_front_homepage:
     defaults: { _controller: ComoFrontBundle:Default:index }
     
 como_front_details:
-    pattern:  /product_details/{id}
-    defaults: { _controller: ComoFrontBundle:Default:details }    
+    pattern:  /details/{id}
+    defaults: { _controller: ComoFrontBundle:Default:details } 
+    requirements: 
+      id: \d+
