@@ -189,7 +189,7 @@ class ProductController extends Controller
               $strCommandName = "QueryProducts";
               $strCommandParameter = "<parameters>";
               $strCommandParameter .= "<row><param>PRODUCT_CATEGORY_LIST</param><value>ACCOMM</value></row>";
-              $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>10000</value></row>";
+              $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>100</value></row>";
               $strCommandParameter .= "<row><param>STATE</param><value>Victoria</value></row>";
               $strCommandParameter .= "<row><param>MULTIMEDIA_RETURN</param><value>YES</value></row>";
               $strCommandParameter .= "<row><param>ADDRESS_RETURN</param><value>YES</value></row>";
@@ -290,6 +290,6 @@ class ProductController extends Controller
               }
 
               $em->flush();
-              return $this->redirect($this->generateUrl('como_accommodation'));
+//              return $this->redirect($this->admin->generateUrl('ComoAccommodationBundle_product'));
         }
 }

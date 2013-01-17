@@ -112,6 +112,8 @@ class ProductAdmin extends Admin
                 ->add('product_name')
                 ->add('city_name')
                 ->add('rate_from')
+//                ->add('productimages', 'string', array('template' => 'ComoAccommodationBundle:ProductAdmin:list_image.html.twig'))
+//                ->add('getShowProductImage','array',array('template' => 'ComoAccommodationBundle:ProductAdmin:list_image.html.twig'))
                 ->add('state_name')
                 ->add('_action', 'actions', array(
                 'actions' => array(
@@ -209,7 +211,7 @@ class ProductAdmin extends Admin
     public function getTemplate($name)
     {
         if($name == 'show'){
-            return 'ComoAccommodationBundle:ProductAdmin:show.html.twig';
+            return 'ComoAccommodationBundle:ProductAdmin:show_image.html.twig';
         }elseif($name == 'list'){
             return 'ComoAccommodationBundle:ProductAdmin:list.html.twig';
         }else{

@@ -1,0 +1,11 @@
+{% block show %}
+    <div>
+        {% for name, view_group in admin.showgroups %}
+             {% for field_name in view_group.fields %}
+                {% if elements[field_name] is defined %}
+                      <img src="{{ elements[field_name]|render_view_element(object) }}" style="max-height: 150px;max-width: 150px">
+                {% endif %}
+             {% endfor %}
+        {% endfor %}                
+    </div>
+{% endblock %}

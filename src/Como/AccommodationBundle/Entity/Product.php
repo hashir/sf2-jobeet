@@ -1638,6 +1638,11 @@ class Product
         return $this->productimages;
     }
     
+//    public function getShowProductImage()
+//    {
+//        return $this->productimages[0];
+//    }
+
     public function __toString()
     {
         return $this->getProductAttrId();

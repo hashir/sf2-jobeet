@@ -13,13 +13,17 @@
                 {% endif %}
 
                 {% for field_name in view_group.fields %}
-                    
                     <tr class="sonata-ba-view-container">
                         {% if elements[field_name] is defined %}
-                            {{ elements[field_name]|render_view_element(object) }}
+                            {% if field_name == 'productimages' %}
+                                {{ elements[field_name]|render_view_element(object) }}
+                            {% else %}
+                                {{ elements[field_name]|render_view_element(object) }}
+                            {% endif %}
                         {% endif %}
                     </tr>
                 {% endfor %}
+                    
             </table>
         {% endfor %}
     </div>

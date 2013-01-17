@@ -78,6 +78,7 @@ class ProductImage
     public function __toString()
     {
         return "<img src=".$this->getServerPath().">";
+//        return $this->getServerPath();
     }
 
     /**

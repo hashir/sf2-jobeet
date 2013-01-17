@@ -118,19 +118,31 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             foreach ($obj->product_multimedia as $rows)
             {
                foreach ($rows->row as $multimedia)
-               {
-                $productImage = new ProductImage();
-                $productImage->setProduct($product);
-                $productImage->setMarketVariantName($multimedia->market_variant_name);
-                $productImage->setMultimediaId($multimedia->multimedia_id);
-                $productImage->setServerPath($multimedia->server_path);
-                $productImage->setAttributeIdMultimediaFile($multimedia->attribute_id_multimedia_file);
-                $productImage->setAttributeIdMultimediaContent($multimedia->attribute_id_multimedia_content);
-                $productImage->setAttributeIdSizeOrientation($multimedia->attribute_id_size_orientation);
-                $productImage->setWidth($multimedia->width);
-                $productImage->setHeight($multimedia->height);
-                $productImage->setAltText($multimedia->alt_text);
-                $em->persist($productImage);
+               {                    
+//                    $ch = curl_init();
+//                    curl_setopt($ch, CURLOPT_POST, 0); 
+//                    curl_setopt($ch,CURLOPT_URL,$multimedia->server_path); 
+//                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+//                    $file_content = curl_exec($ch);
+//                    curl_close($ch);
+//                    
+//                    file_put_contents('../../bundles/comoaccommodation/images/'.$multimedia->multimedia_id.''.$multimedia->attribute_id_multimedia_file, $file_content);
+////                    $downloaded_file = fopen('./images/uploads/'.$multimedia->multimedia_id.''.$multimedia->attribute_id_multimedia_file, 'w');
+////                    fwrite($downloaded_file, $file_content);
+////                    fclose($downloaded_file);
+//                    exit;
+                    $productImage = new ProductImage();
+                    $productImage->setProduct($product);
+                    $productImage->setMarketVariantName($multimedia->market_variant_name);
+                    $productImage->setMultimediaId($multimedia->multimedia_id);
+                    $productImage->setServerPath($multimedia->server_path);
+                    $productImage->setAttributeIdMultimediaFile($multimedia->attribute_id_multimedia_file);
+                    $productImage->setAttributeIdMultimediaContent($multimedia->attribute_id_multimedia_content);
+                    $productImage->setAttributeIdSizeOrientation($multimedia->attribute_id_size_orientation);
+                    $productImage->setWidth($multimedia->width);
+                    $productImage->setHeight($multimedia->height);
+                    $productImage->setAltText($multimedia->alt_text);
+                    $em->persist($productImage);
                }
             }
             
