@@ -3,4 +3,8 @@ app/cache/*
 app/logs/*
 web/uploads/*
 vendor/*
-src/Como/TneBundle/Zend/job.dev.index/*
+src/Como/SearchBundle/Zend/job.dev.index/*
+app/bootstrap.php.cache
+composer.phar
+composer.lock
+app/config/parameters.yml
