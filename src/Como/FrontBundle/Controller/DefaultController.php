@@ -15,4 +15,13 @@ class DefaultController extends Controller
         
         return $this->render('ComoFrontBundle:Default:index.html.twig', array('objs' => $objs));
     }
+    
+    public function detailsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $objs = $em->getRepository('ComoAccommodationBundle:Product')->getProductList();
+        
+        return $this->render('ComoFrontBundle:Default:index.html.twig', array('objs' => $objs));
+    }    
 }

@@ -79,15 +79,15 @@
       <div class="jumbotron">
         <p class="lead">ATDW Operator listing</p>
       </div>
-
-      <hr>
-      {% for obj in objs %}
-            {% include 'ComoAccommodationBundle:Default:list.html.twig' with {'obj':obj} %}
-            
-      {% endfor %}
       
-      <hr>
+      {% block contentb %}
+        <hr>
+          {% for obj in objs %}
+                {% include 'ComoAccommodationBundle:Default:list.html.twig' with {'obj':obj} %}
 
+          {% endfor %}
+        <hr>
+      {% endblock %}
       <div class="footer">
         <p>&copy; Company 2012</p>
       </div>

@@ -4,16 +4,19 @@
                 <div class="span4">
                     <div><img src="{{ obj.Productimages[0].ServerPath }}" /></div>
                 </div>
+                {% set route = app.request.get('_route') %}
+                {% set route_params = app.request.get('_route_params') %}                    
                 <div class="span4">
                     <h4>{{ obj.ProductName }}</h4>
-                    <p>{{ obj.ProductDescription }}</p>
+                    <p>{{ obj.ProductDescription | truncate(150) }}</p>
+                    <a href="{{ path('como_front_details', route_params | merge({ 'id': obj.id })) }}">View Details</a>
                 </div>
                 <div class="span4">
                     <h4>Per Room / night from</h4>
                     <p>{{ obj.RateFrom }}</p>
                 </div>
              </div>
-          
+        
         </div>
 
         <div class="span3">

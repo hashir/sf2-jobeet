@@ -1,3 +1,7 @@
 como_front_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: ComoFrontBundle:Default:index }
+    
+como_front_details:
+    pattern:  /{id}
+    defaults: { _controller: ComoFrontBundle:Default:details }    
