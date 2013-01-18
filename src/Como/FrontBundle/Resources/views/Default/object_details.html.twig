@@ -4,11 +4,11 @@
                 <h4>{{ obj.ProductName }}</h4>
                 <p>{{ obj.ProductDescription  }}</p>
             </div>
-            <div>                
+                          
                 
                 {% for image in obj.Productimages %}
                 
-                  {% if loop.index % 3==0 %}
+                  {% if loop.index % 3==1 %}
                     <div class="row">
                   {% endif %}
                             
@@ -20,6 +20,6 @@
                 {% endfor %}
                     
                 
-            </div>
+          
                   
 </div>
