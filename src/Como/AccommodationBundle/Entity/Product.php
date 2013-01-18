@@ -1647,4 +1647,42 @@ class Product
     {
         return $this->getProductAttrId();
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $productexternals;
+
+
+    /**
+     * Add productexternals
+     *
+     * @param \Como\AccommodationBundle\Entity\ProductExternal $productexternals
+     * @return Product
+     */
+    public function addProductexternal(\Como\AccommodationBundle\Entity\ProductExternal $productexternals)
+    {
+        $this->productexternals[] = $productexternals;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productexternals
+     *
+     * @param \Como\AccommodationBundle\Entity\ProductExternal $productexternals
+     */
+    public function removeProductexternal(\Como\AccommodationBundle\Entity\ProductExternal $productexternals)
+    {
+        $this->productexternals->removeElement($productexternals);
+    }
+
+    /**
+     * Get productexternals
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductexternals()
+    {
+        return $this->productexternals;
+    }
 }

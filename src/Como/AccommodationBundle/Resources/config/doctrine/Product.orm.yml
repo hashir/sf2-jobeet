@@ -71,3 +71,6 @@ Como\AccommodationBundle\Entity\Product:
     productimages:
       targetEntity: ProductImage
       mappedBy: product
+    productexternals:
+      targetEntity: ProductExternal
+      mappedBy: product      

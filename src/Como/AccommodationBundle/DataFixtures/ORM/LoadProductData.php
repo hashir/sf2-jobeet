@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Como\AccommodationBundle\Entity\Product;
 use Como\AccommodationBundle\Entity\ProductImage;
+use Como\AccommodationBundle\Entity\ProductExternal;
  
 class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -20,9 +21,9 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
         $strCommandName = "QueryProducts";
         $strCommandParameter = "<parameters>";
         $strCommandParameter .= "<row><param>PRODUCT_CATEGORY_LIST</param><value>ACCOMM</value></row>";
-        $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>10000</value></row>";
+        $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>100</value></row>";
         $strCommandParameter .= "<row><param>EXTERNAL_SYSTEM_RETURN</param><value>YES</value></row>";
-        $strCommandParameter .= "<row><param>EXTERNAL_SYSTEM_CODE</param><value>TXA_DEFAULT,TXA_MULTI</value></row>";
+//        $strCommandParameter .= "<row><param>EXTERNAL_SYSTEM_CODE</param><value>TXA_DEFAULT,TXA_MULTI</value></row>";
         $strCommandParameter .= "<row><param>STATE</param><value>Victoria</value></row>";
         $strCommandParameter .= "<row><param>MULTIMEDIA_RETURN</param><value>YES</value></row>";
         $strCommandParameter .= "<row><param>ADDRESS_RETURN</param><value>YES</value></row>";
@@ -146,6 +147,20 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
                     $productImage->setAltText($multimedia->alt_text);
                     $em->persist($productImage);
                }
+            }
+            
+            foreach ($obj->product_external_system as $rows)
+            {
+                foreach ($rows->row as $items)
+                {
+                    if($items->external_system_code == 'TXA_MULTI' || $items->external_system_code == 'TXA_DEFAULT'){
+                        $productexternal = new ProductExternal();
+                        $productexternal->setProduct($product);
+                        $productexternal->setTxaAttribute($items->external_system_code);
+                        $productexternal->setProviderShortName($items->external_system_text);
+                        $em->persist($productexternal);
+                    }
+                }
             }
             
         }

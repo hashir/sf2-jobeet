@@ -1,0 +1,23 @@
+Como\AccommodationBundle\Entity\ProductExternal:
+  type: entity
+  table: productexternal
+  repositoryClass: Como\AccommodationBundle\Repository\ProductExternalRepository
+  fields:
+    id:
+        type: integer
+        id: true
+        generator:
+            strategy: AUTO
+    txa_attribute:
+      type: string
+      length: 255
+    provider_short_name:
+      type: string
+      length: 255
+  manyToOne:
+    product:
+      targetEntity: Product
+      inversedBy: productexternals
+      joinColumn:
+        name: product_id
+        referencedColumnName: id        

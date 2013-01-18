@@ -20,7 +20,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $obj = $em->getRepository('ComoAccommodationBundle:Product')->find($id);
+        $obj = $em->getRepository('ComoAccommodationBundle:Product')->find($id);        
         
         return $this->render('ComoFrontBundle:Default:details.html.twig', array('obj' => $obj));
     }    
