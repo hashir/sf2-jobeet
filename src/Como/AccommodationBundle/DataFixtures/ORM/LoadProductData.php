@@ -37,21 +37,6 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 
         foreach($xmlObj as $obj){
             
-//            $xmlArray = get_object_vars($obj->product_record);
-//            foreach ($xmlArray as $key=>$value){
-//                $product = new Product();
-//                if($key == 'product_id'){
-//                    $setFunc = 'setProductAttrId';
-//                }elseif(in_array($key, array('product_attr_id','delete_indicator','international_ready_flag','national_head_office_flag','product_category_id','owning_organisation_id','contributing_organisation_id','market_variant_id','product_name','children_catered_for_flag','pets_allowed_flag','disabled_access_flag','brochure_available_flag','validity_date_from','validity_date_to','attribute_id_atdw_status','attribute_id_atdw_status_description','atdw_expiry_date','free_entry_flag','attribute_id_currency','attribute_id_currency_description','attribute_id_rate_basis','attribute_id_rate_basis_description','rate_from','rate_to','city_name','state_name','country_name','domestic_region_name','product_description','max_star_rating','product_classification_match','product_classifications','service_classification_match','service_classifications','product_attribute_match','product_attributes','service_attribute_match','service_attributes','relevance','total_criteria','percent_relevance','attribute_id_address','attribute_id_address_description','attribute_id_address_description_mv','address_line_1','suburb_name','city_name','area_name','state_name','country_name','address_postal_code','same_postal_address_flag','override_domestic_region_fla','geocode_gda_latitude','geocode_gda_longitude','attribute_id_geocode_proj_sys','attribute_id_geocode_proj_sys_description','attribute_id_geocode_proj_sys_description_mv
-//'))){
-//                
-//                $setFunc = 'set'.str_replace(' ','',  ucwords(str_replace('_', ' ', $key)));
-//}
-//                $product->$setFunc($value);
-//                
-//               
-//            }$em->persist($product);
-//         exit;
             if($obj->product_record->product_id != NULL){
                 $product = new Product();
                 $product->setProductAttrId($obj->product_record->product_id);
