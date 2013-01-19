@@ -22,7 +22,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $obj = $em->getRepository('ComoAccommodationBundle:Product')->find($id);
-        $txaData = "";
+        $txaData = array();
         $prodExt = "";
         foreach ($obj->getProductexternals() as $prodExternal)
         {
@@ -76,7 +76,7 @@ class DefaultController extends Controller
 
             $result = curl_exec($soap_do);
             $err = curl_error($soap_do);
-
+            
             $xml = simplexml_load_string($result);
             $xml->registerXPathNamespace('TXA', 'http://www.v3leisure.com/Schemas/CABS/1.0/CABS_ProviderCalendar_RS.xsd');
             $channels = $xml->xpath('//TXA:Channels');
@@ -90,13 +90,12 @@ class DefaultController extends Controller
                         $product = json_decode( json_encode($product) , 1);
                         foreach($product as $attr)
                         {
-                            echo '<pre>';
-                            print_r($attr);
+                           $txaData[] = $attr;
                         }
                         
                     }
                     
-                }exit;
+                }
             }
         }
         return $this->render('ComoFrontBundle:Default:details.html.twig', array('obj' => $obj,'txaData' => $txaData));

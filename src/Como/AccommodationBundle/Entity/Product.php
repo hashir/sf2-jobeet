@@ -1685,4 +1685,60 @@ class Product
     {
         return $this->productexternals;
     }
+    /**
+     * @var string
+     */
+    private $tag;
+
+    /**
+     * @var enum
+     */
+    private $type;
+
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     * @return Product
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string 
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \enum $type
+     * @return Product
+     */
+    public function setType(\enum $type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \enum 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }
