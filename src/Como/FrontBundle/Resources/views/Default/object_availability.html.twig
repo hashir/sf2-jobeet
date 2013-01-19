@@ -1,4 +1,34 @@
-<table class="table table-striped">
-    {{ txaData }}
-</table>
-       
+
+        
+        {% for txa in txaData %}
+        
+            <table class="table table-striped">
+                <caption style="text-align: left;margin-bottom: 10px;"><h4> {{ txa['@attributes']['short_name'] }} </h4></caption>
+            <tr>
+                <th>
+                    Product
+                </th>
+                {% for i in 1..7 %}
+                    <th>
+                        {{ date() | date("m-d-Y") }}
+                    </th>
+                {%endfor%}
+            </tr>
+            {% for det in txa.Products.Product %}
+                <tr>
+                    <td>
+                        {{ det['@attributes']['name'] }}
+                    </td>
+                {%for d in det.Availability.AvailabilityDate %}
+                    <td>
+                        {{d['@attributes']['is_available']}} <br/>
+                        {% if d['@attributes']['price'] is defined %} {{d['@attributes']['price']}} {% endif %}
+                    </td>            
+                {% endfor%}
+                </tr>
+            {% endfor%}
+        
+        {% endfor%}         
+
+    
+</table>            
