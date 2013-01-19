@@ -13,7 +13,7 @@
       {% include 'ComoFrontBundle:Default:object_details.html.twig' with {'obj':obj} %}
     </div>
     <div class="tab-pane" id="tab2">
-      {% include 'ComoFrontBundle:Default:object_availability.html.twig' with {'txaData':txaData} %}
+      {% include 'ComoFrontBundle:Default:object_availability.html.twig' with {'txaData':txaData, 'avail_dates':avail_dates} %}
     </div>
     <div class="tab-pane" id="tab3">
       {% include 'ComoFrontBundle:Default:object_map.html.twig' with {'obj':obj} %}

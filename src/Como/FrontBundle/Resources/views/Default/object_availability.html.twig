@@ -8,9 +8,9 @@
                 <th>
                     Product
                 </th>
-                {% for i in 1..7 %}
+                {% for av_dt in avail_dates %}
                     <th>
-                        {{ date() | date("m-d-Y") }}
+                        {{ av_dt | date("m/d/Y") }}
                     </th>
                 {%endfor%}
             </tr>
