@@ -85,8 +85,16 @@ class DefaultController extends Controller
             {
                 foreach ($channels as $channel)
                 {
-                    echo '<pre>';
-                    print_r($channel->Channel->Providers->Provider->Products);
+                    foreach($channel->Channel->Providers->Provider->Products->Product as $product)
+                    {
+                        $product = json_decode( json_encode($product) , 1);
+                        foreach($product as $attr)
+                        {
+                            echo '<pre>';
+                            print_r($attr);
+                        }
+                        
+                    }
                     
                 }exit;
             }

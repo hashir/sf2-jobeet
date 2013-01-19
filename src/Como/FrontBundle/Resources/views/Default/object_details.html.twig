@@ -4,15 +4,15 @@
                 <h4>{{ obj.ProductName }}</h4>
                 <p>{{ obj.ProductDescription  }}</p>
             </div>
-            <div>                
+                          
                 
                 {% for image in obj.Productimages %}
                 
-                  {% if loop.index % 3==0 %}
+                  {% if loop.index % 3==1 %}
                     <div class="row">
                   {% endif %}
                             
-                     <div class="span4"><img src="{{ image.ServerPath }}" /></div>
+                     <div class="span4"> <a class="lightbox-a" id="lightbox-{{loop.index}}" data-toggle="lightbox" href="#demoLightbox"><img src="{{ image.ServerPath }}" /></a></div>
                      
                   {% if loop.index % 3==0 %}  
                     </div> <br />
@@ -20,6 +20,21 @@
                 {% endfor %}
                     
                 
-            </div>
+          <div id="demoLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+                <div class='lightbox-header'>
+                        <button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
+                </div>
+                <div class='lightbox-content'>
+                        <img id="lightbox-image" src="image.png">
+                        <div class="lightbox-caption"><p>Your caption here</p></div>
+                </div>
+        </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.lightbox-a').click(function(){
+                $('#lightbox-image').attr('src',$(this).find('img').attr('src'));
+        });
+    });
+   </script>
                   
 </div>
