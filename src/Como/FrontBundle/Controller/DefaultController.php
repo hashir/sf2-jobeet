@@ -98,6 +98,8 @@ class DefaultController extends Controller
                 }
             }
         }
+//        echo '<pre>';
+//        print_r($txaData); exit;
         return $this->render('ComoFrontBundle:Default:details.html.twig', array('obj' => $obj,'txaData' => $txaData));
     }
 
