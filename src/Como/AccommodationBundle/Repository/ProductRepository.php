@@ -15,7 +15,7 @@ class ProductRepository extends EntityRepository
     public function getProductList()
     {
         $qb = $this->createQueryBuilder('j')
-        ->setMaxResults(5);
+        ->setMaxResults(10);
         
         $query = $qb->getQuery();
 
