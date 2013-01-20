@@ -33,7 +33,7 @@ class DefaultController extends Controller
            $txaData = $this->checkAvailability($prodExt);
         }
 //        echo '<pre>';
-//        print_r(count($txaData)); exit;
+//        print_r($txaData); exit;
         $avail_dates;
         for( $i=0; $i<7 ;$i++){
             $avail_dates[] = date('d-m-Y', strtotime("+{$i}days"));
