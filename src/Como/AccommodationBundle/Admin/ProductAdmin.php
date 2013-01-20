@@ -42,6 +42,7 @@ class ProductAdmin extends Admin
                 ->add('product_description', 'text', array('required' => false))
                 ->add('rate_from')
                 ->add('rate_to')
+                ->add('tag')
                 ->with('TXA Data', array('collapsed' => true))
                 ->add('productexternals','sonata_type_collection', array('label' => 'TXA Data', 'by_reference' => true), 
                         array('edit' => 'inline',

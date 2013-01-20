@@ -8,3 +8,4 @@ app/bootstrap.php.cache
 composer.phar
 composer.lock
 app/config/parameters.yml
+we/bundles/*

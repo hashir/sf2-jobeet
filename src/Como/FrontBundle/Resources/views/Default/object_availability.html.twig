@@ -1,4 +1,22 @@
-<table class="table table-striped">
-    {{ txaData }}
-</table>
-       
+
+        
+        {% for txa in txaData %}
+        
+            <table class="table table-striped">
+                <caption style="text-align: left;margin-bottom: 10px;"><h4> {{ txa['@attributes']['short_name'] }} </h4></caption>
+            <tr>
+                <th>
+                    Product
+                </th>
+                {% for av_dt in avail_dates %}
+                    <th>
+                        {{ av_dt | date("m/d/Y") }}
+                    </th>
+                {%endfor%}
+            </tr>
+            
+        
+        {% endfor%}         
+
+    
+</table>            
