@@ -1,6 +1,6 @@
 <?php
 
-// src/Como/AccommodationBundle/Admin/ProductAdmin.php
+// src/Como/AccommodationBundle/Admin/ProductManualAdmin.php
 
 namespace Como\AccommodationBundle\Admin;
 
@@ -13,7 +13,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 use Como\AccommodationBundle\Entity\Product;
 
-class ProductAdmin extends Admin
+class ProductManualAdmin extends Admin
 {
 
 // setup the default sort column and order

@@ -44,7 +44,7 @@ class DefaultController extends Controller
   </Providers>
   <Query cache="On">
     <IndustryCategory xmlns="http://www.v3leisure.com/Schemas/CABS/1.0/CABS_Common.xsd">Accommodation</IndustryCategory>
-    <Criteria start_date="2013-01-19" days="7" xmlns="http://www.v3leisure.com/Schemas/CABS/1.0/CABS_Common.xsd" />
+    <Criteria start_date="2013-01-21" days="7" xmlns="http://www.v3leisure.com/Schemas/CABS/1.0/CABS_Common.xsd" />
   </Query>
   <Response product_calendar="true" />
 </CABS_ProviderCalendar_RQ>

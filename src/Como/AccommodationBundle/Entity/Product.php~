@@ -27,6 +27,16 @@ class Product
     /**
      * @var string
      */
+    private $tag;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var string
+     */
     private $international_ready_flag;
 
     /**
@@ -300,11 +310,17 @@ class Product
     private $productimages;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $productexternals;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->productimages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productexternals = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -361,6 +377,52 @@ class Product
     public function getDeleteIndicator()
     {
         return $this->delete_indicator;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     * @return Product
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string 
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Product
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -1637,22 +1699,16 @@ class Product
     {
         return $this->productimages;
     }
-    
+
 //    public function getShowProductImage()
 //    {
 //        return $this->productimages[0];
 //    }
 
-    public function __toString()
+     public function __toString()
     {
         return $this->getProductAttrId();
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $productexternals;
-
-
     /**
      * Add productexternals
      *
@@ -1684,61 +1740,5 @@ class Product
     public function getProductexternals()
     {
         return $this->productexternals;
-    }
-    /**
-     * @var string
-     */
-    private $tag;
-
-    /**
-     * @var enum
-     */
-    private $type;
-
-
-    /**
-     * Set tag
-     *
-     * @param string $tag
-     * @return Product
-     */
-    public function setTag($tag)
-    {
-        $this->tag = $tag;
-    
-        return $this;
-    }
-
-    /**
-     * Get tag
-     *
-     * @return string 
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-    /**
-     * Set type
-     *
-     * @param \enum $type
-     * @return Product
-     */
-    public function setType(\enum $type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return \enum 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 }

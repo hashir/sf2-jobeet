@@ -5,7 +5,15 @@ como_accommodation_homepage:
 ComoAccommodationBundle_product:
     resource: "@ComoAccommodationBundle/Resources/config/routing/product.yml"
     prefix:   /product
+
+ComoAccommodationBundle_productmanual:
+    resource: "@ComoAccommodationBundle/Resources/config/routing/productmanual.yml"
+    prefix:   /productmanual    
     
 ComoAccommodationBundle_productimage:
     resource: "@ComoAccommodationBundle/Resources/config/routing/productimage.yml"
     prefix:   /productimage    
+
+ComoAccommodationBundle_productexternal:
+    resource: "@ComoAccommodationBundle/Resources/config/routing/productexternal.yml"
+    prefix:   /productexternal

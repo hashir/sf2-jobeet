@@ -81,6 +81,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
                 $product->setRelevance($obj->product_record->relevance);
                 $product->setTotalCriteria($obj->product_record->total_criteria);
                 $product->setPercentRelevance($obj->product_record->percent_relevance);
+                $product->setType('ATDW');
 //                if($obj->product_address){
                     $product->setAttributeIdAddress($obj->product_address->row->attribute_id_address);
                     $product->setAttributeIdAddressDescription($obj->product_address->row->attribute_id_address_description);

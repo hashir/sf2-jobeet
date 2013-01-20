@@ -108,4 +108,9 @@ class ProductExternal
     {
         return $this->product;
     }
+    
+    public function __toString()
+    {
+        return $this->getProviderShortName();
+    }    
 }

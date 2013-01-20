@@ -18,6 +18,7 @@ Como\AccommodationBundle\Entity\ProductExternal:
     product:
       targetEntity: Product
       inversedBy: productexternals
+      cascade: ["persist"]
       joinColumn:
         name: product_id
-        referencedColumnName: id        
+        referencedColumnName: id

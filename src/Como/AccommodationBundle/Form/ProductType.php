@@ -52,14 +52,15 @@ class ProductType extends AbstractType
             ->add('service_attributes')
             ->add('relevance')
             ->add('total_criteria')
-            ->add('percent_relevance')
+            ->add('percent_relevance')           
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Como\AccommodationBundle\Entity\Product'
+            'data_class' => 'Como\AccommodationBundle\Entity\Product',
+            'cascade_validation' => true,
         ));
     }
 

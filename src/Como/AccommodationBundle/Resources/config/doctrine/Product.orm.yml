@@ -10,6 +10,8 @@ Como\AccommodationBundle\Entity\Product:
             strategy: AUTO
     product_attr_id: {  type: string(255), nullable: true }
     delete_indicator: {  type: string(255), nullable: true }
+    tag: { type: string(255), nullable: true }
+    type: { type: string(255), nullable: true }
     international_ready_flag: {  type: string(255), nullable: true }
     national_head_office_flag: {  type: integer, nullable: true }
     product_category_id: {  type: string(255), nullable: true }
@@ -73,4 +75,5 @@ Como\AccommodationBundle\Entity\Product:
       mappedBy: product
     productexternals:
       targetEntity: ProductExternal
-      mappedBy: product      
+      mappedBy: product
+      cascade: ["persist"]

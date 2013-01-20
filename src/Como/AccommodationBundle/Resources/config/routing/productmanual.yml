@@ -1,0 +1,30 @@
+productmanualmanual:
+    pattern:  /
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:index" }
+
+productmanual_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:show" }
+
+productmanual_new:
+    pattern:  /new
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:new" }
+
+productmanual_create:
+    pattern:  /create
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:create" }
+    requirements: { _method: post }
+
+productmanual_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:edit" }
+
+productmanual_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:update" }
+    requirements: { _method: post }
+
+productmanual_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ComoAccommodationBundle:Productmanual:delete" }
+    requirements: { _method: post }

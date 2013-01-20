@@ -8,6 +8,19 @@ services:
 
     como.accommodation.admin.product:
         class: Como\AccommodationBundle\Admin\ProductAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Operators, label: ATDW }
         arguments: [null, Como\AccommodationBundle\Entity\Product, ComoAccommodationBundle:ProductAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Operators, label: ATDW }        
+
+    como.accommodation.admin.productmanual:
+        class: Como\AccommodationBundle\Admin\ProductManualAdmin
+        arguments: [null, Como\AccommodationBundle\Entity\Product, ComoAccommodationBundle:ProductAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Operators, label: Manual}        
+
+    como.accommodation.admin.productexternal:
+      class: Como\AccommodationBundle\Admin\ProductExternalAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Operators, label: TXA Data }
+      arguments: [null, Como\AccommodationBundle\Entity\ProductExternal, ComoAccommodationBundle:ProductExternalAdmin]
+        

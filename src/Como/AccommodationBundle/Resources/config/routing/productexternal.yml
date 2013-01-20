@@ -1,0 +1,30 @@
+productexternal:
+    pattern:  /
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:index" }
+
+productexternal_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:show" }
+
+productexternal_new:
+    pattern:  /new
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:new" }
+
+productexternal_create:
+    pattern:  /create
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:create" }
+    requirements: { _method: post }
+
+productexternal_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:edit" }
+
+productexternal_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:update" }
+    requirements: { _method: post }
+
+productexternal_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ComoAccommodationBundle:ProductExternal:delete" }
+    requirements: { _method: post }
