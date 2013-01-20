@@ -97,8 +97,10 @@ class DefaultController extends Controller
         $channels = $xml->xpath('//TXA:Channels');
 
         $channels_array = json_decode( json_encode($channels) , 1);
-        
-        return $channels_array[0]['Channel']['Providers']['Provider'];
+        if(isset($channels_array[0]['Channel']['Providers']['Provider']))
+            return $channels_array[0]['Channel']['Providers'];
+        else
+            return '';
     }
     
     protected function fetchTxaData(){

@@ -1,6 +1,6 @@
 
-        
-        {% for txa in txaData %}
+{% if txaData.Provider[0] is defined %}        
+        {% for txa in txaData.Provider %}
         
             <table class="table table-striped">
                 <caption style="text-align: left;margin-bottom: 10px;"><h4> {{ txa['@attributes']['short_name'] }} </h4></caption>
@@ -14,9 +14,50 @@
                     </th>
                 {%endfor%}
             </tr>
-            
-        
-        {% endfor%}         
+            {% for det in txa.Products.Product %}
+                <tr>
+                    <td>
+                        {{ det['@attributes']['name'] }}
+                    </td>
+                {%for d in det.Availability.AvailabilityDate %}
+                    <td>
+                        {{d['@attributes']['is_available']}} <br/>
+                        {% if d['@attributes']['price'] is defined %} {{d['@attributes']['price']}} {% endif %}
+                    </td>            
+                {% endfor%}
+                </tr>
+            {% endfor%}
+          </table>  
+     {% endfor%}
 
-    
-</table>            
+{% else %}
+     {% for txa in txaData %}
+        <table class="table table-striped">
+                <caption style="text-align: left;margin-bottom: 10px;"><h4> {{ txa['@attributes']['short_name'] }} </h4></caption>
+            <tr>
+                <th>
+                    Product
+                </th>
+                {% for av_dt in avail_dates %}
+                    <th>
+                        {{ av_dt | date("m/d/Y") }}
+                    </th>
+                {%endfor%}
+            </tr>
+            {% for det in txa.Products.Product %}
+                <tr>
+                    <td>
+                        {{ det['@attributes']['name'] }}
+                    </td>
+                {%for d in det.Availability.AvailabilityDate %}
+                    <td>
+                        {{d['@attributes']['is_available']}} <br/>
+                        {% if d['@attributes']['price'] is defined %} {{d['@attributes']['price']}} {% endif %}
+                    </td>            
+                {% endfor%}
+                </tr>
+            {% endfor%}
+            </table>
+     {% endfor%}
+{% endif %}
+            
