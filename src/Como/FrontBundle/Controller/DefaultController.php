@@ -22,7 +22,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
     
         $obj = $em->getRepository('ComoAccommodationBundle:Product')->find($id);        
-        $prodExt = "";
+        $prodExt = $txaData = "";
         foreach ($obj->getProductexternals() as $prodExternal)
         {
             $prodExt.= '<Provider short_name="' . $prodExternal->getProviderShortName() . '" xmlns="http://www.v3leisure.com/Schemas/CABS/1.0/CABS_Common.xsd" />';
@@ -30,7 +30,7 @@ class DefaultController extends Controller
         if ($prodExt)
         {
 
-           $txaData = $this->checkAvailability($prodExt);
+          // $txaData = $this->checkAvailability($prodExt);
         }
 //        echo '<pre>';
 //        print_r($txaData); exit;
@@ -39,7 +39,11 @@ class DefaultController extends Controller
             $avail_dates[] = date('d-m-Y', strtotime("+{$i}days"));
         }
 //        print_r($avail_dates);exit;
-        return $this->render('ComoFrontBundle:Default:details.html.twig', array('obj' => $obj,'avail_dates'=>$avail_dates, 'txaData' => $txaData));
+        $txaProviderDump = $this->fetchTxaData();
+        
+//        print_r($txaProviderDump);exit;
+        
+        return $this->render('ComoFrontBundle:Default:details.html.twig', array('obj' => $obj,'avail_dates'=>$avail_dates, 'txaData' => $txaData, 'providerDump'=> $txaProviderDump));
     }
     
     protected function checkAvailability($prodExt){
@@ -160,14 +164,14 @@ class DefaultController extends Controller
 
         $result = curl_exec($soap_do);
         $err = curl_error($soap_do);
-        print_r($result); exit;
 
         $xml = simplexml_load_string($result);
-
-        $xml->registerXPathNamespace('TXA', 'http://www.v3leisure.com/Schemas/CABS/1.0/CABS_ProviderCalendar_RS.xsd');
-        echo '<pre>';
-        print_r($xml->xpath('//TXA:Channels'));
-
+        $xml->registerXPathNamespace('TXA', 'http://www.v3leisure.com/Schemas/CABS/1.0/CABS_ProviderSearch_RS.xsd');
+        
+        $channels = $xml->xpath('//TXA:Channels');
+        $channels_array = json_decode( json_encode($channels) , 1);
+                
+        return $channels_array[0]['Channel']['Providers']['Provider'][0];
     }
     
 }
