@@ -4,7 +4,9 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">Information</a></li>
-    <li><a href="#tab2" data-toggle="tab">Availability</a></li>
+    {% if txaData != '' %}
+        <li><a href="#tab2" data-toggle="tab">Availability</a></li>
+    {% endif %}
     <li><a href="#tab3" data-toggle="tab">Map</a></li>
     <li><a href="#tab4" data-toggle="tab">Provider Dump</a></li>
   </ul>
@@ -13,9 +15,11 @@
       
       {% include 'ComoFrontBundle:Default:object_details.html.twig' with {'obj':obj} %}
     </div>
-    <div class="tab-pane" id="tab2">
-      {% include 'ComoFrontBundle:Default:object_availability.html.twig' with {'txaData':txaData, 'avail_dates':avail_dates} %}
-    </div>
+    {% if txaData != '' %}
+        <div class="tab-pane" id="tab2">
+          {% include 'ComoFrontBundle:Default:object_availability.html.twig' with {'txaData':txaData, 'avail_dates':avail_dates} %}
+        </div>
+    {% endif %}
     <div class="tab-pane" id="tab3">
       {% include 'ComoFrontBundle:Default:object_map.html.twig' with {'obj':obj} %}
     </div>

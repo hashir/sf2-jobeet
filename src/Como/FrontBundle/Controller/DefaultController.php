@@ -33,7 +33,7 @@ class DefaultController extends Controller
            $txaData = $this->checkAvailability($prodExt);
         }
 //        echo '<pre>';
-//        print_r($txaData); exit;
+//        print_r(count($txaData)); exit;
         $avail_dates;
         for( $i=0; $i<7 ;$i++){
             $avail_dates[] = date('d-m-Y', strtotime("+{$i}days"));
@@ -97,8 +97,10 @@ class DefaultController extends Controller
         $channels = $xml->xpath('//TXA:Channels');
 
         $channels_array = json_decode( json_encode($channels) , 1);
-        
-        return $channels_array[0]['Channel']['Providers']['Provider'];
+        if(isset($channels_array[0]['Channel']['Providers']['Provider']))
+            return $channels_array[0]['Channel']['Providers'];
+        else
+            return '';
     }
     
     protected function fetchTxaData(){

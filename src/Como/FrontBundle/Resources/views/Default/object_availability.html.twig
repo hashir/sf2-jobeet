@@ -14,9 +14,18 @@
                     </th>
                 {%endfor%}
             </tr>
-            
-        
-        {% endfor%}         
-
-    
-</table>            
+            {% for det in txa.Products.Product %}
+                <tr>
+                    <td>
+                        {{ det['@attributes']['name'] }}
+                    </td>
+                {%for d in det.Availability.AvailabilityDate %}
+                    <td>
+                        {{d['@attributes']['is_available']}} <br/>
+                        {% if d['@attributes']['price'] is defined %} {{d['@attributes']['price']}} {% endif %}
+                    </td>            
+                {% endfor%}
+                </tr>
+            {% endfor%}
+          </table>  
+     {% endfor%}
