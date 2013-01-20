@@ -55,9 +55,8 @@ class ProductAdmin extends Admin
                 ->add('productexternals','sonata_type_collection', array('label' => 'TXA Settings', 'by_reference' => false), 
                         array('edit' => 'inline',
                             'inline' => 'table',
-                            'targetEntity'=>'Como\AccommodationBundle\Entity\ProductExternal',
-                            'options' => array('data_class' => 'Como\AccommodationBundle\Entity\Product'),
-                            'link_parameters' => array('context' => 'productexternal')))     
+                            'targetEntity'=>'Como\AccommodationBundle\Entity\ProductExternal'
+                            ))     
                 
              ->with('Address', array('collapsed' => true))
                 ->add('attribute_id_address')
