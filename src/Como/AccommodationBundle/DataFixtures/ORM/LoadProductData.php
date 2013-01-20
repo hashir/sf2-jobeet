@@ -21,7 +21,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
         $strCommandName = "QueryProducts";
         $strCommandParameter = "<parameters>";
         $strCommandParameter .= "<row><param>PRODUCT_CATEGORY_LIST</param><value>ACCOMM</value></row>";
-        $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>100</value></row>";
+        $strCommandParameter .= "<row><param>RESULTS_PER_PAGE</param><value>1000</value></row>";
         $strCommandParameter .= "<row><param>EXTERNAL_SYSTEM_RETURN</param><value>YES</value></row>";
 //        $strCommandParameter .= "<row><param>EXTERNAL_SYSTEM_CODE</param><value>TXA_DEFAULT,TXA_MULTI</value></row>";
         $strCommandParameter .= "<row><param>STATE</param><value>Victoria</value></row>";
