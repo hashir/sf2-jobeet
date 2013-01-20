@@ -16,7 +16,7 @@ services:
         class: Como\AccommodationBundle\Admin\ProductManualAdmin
         arguments: [null, Como\AccommodationBundle\Entity\Product, ComoAccommodationBundle:ProductManualAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Operators, label: Manual}        
+            - { name: sonata.admin, manager_type: orm, group: Operators, label: Manual Data}        
 
     como.accommodation.admin.productexternal:
       class: Como\AccommodationBundle\Admin\ProductExternalAdmin
