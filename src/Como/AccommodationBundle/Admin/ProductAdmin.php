@@ -149,7 +149,6 @@ class ProductAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-                ->add('productimages')
                 ->add('product_attr_id')                
                 ->add('product_category_id')                
                 ->add('product_name')
@@ -204,6 +203,7 @@ class ProductAdmin extends Admin
                 ->add('owning_organisation_id')
                 ->add('contributing_organisation_id')
                 ->add('market_variant_id')
+                ->add('productimages')
         ;
     }
     

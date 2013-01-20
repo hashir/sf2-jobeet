@@ -34,7 +34,7 @@ class ProductExternalAdmin extends Admin
 //                    'class' => 'ComoAccommodationBundle:ProductExternal',
 //                    'property' => 'product',
 //                ))
-//                ->add('product')
+                ->add('product')
 //                ->add('product', 'hidden', array(
 //                    'data' => "",
 //                ))
