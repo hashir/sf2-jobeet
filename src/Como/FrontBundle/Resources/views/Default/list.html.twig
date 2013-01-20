@@ -13,6 +13,7 @@
             </div>
             <div class="span6">                     
                 <strong style="font-size: 16px;">{{ obj.ProductName }}</strong>
+                <p><span class="label label-success">{{ obj.tag }}</span></p>
                     <p>
                         {{ obj.ProductDescription | slice(0,600) }}... 
                         <a href="{{ path('como_front_details', {'id': obj.id} ) }}">View Details</a>

@@ -15,6 +15,10 @@ use Como\AccommodationBundle\Entity\Product;
 
 class ProductAdmin extends Admin
 {
+    
+    protected $baseRouteName = 'admin_vendor_accommodationbundle_product';
+
+    protected $baseRoutePattern = 'como/accommodation/product';
 
 // setup the default sort column and order
     protected $datagridValues = array(
@@ -43,11 +47,16 @@ class ProductAdmin extends Admin
                 ->add('rate_from')
                 ->add('rate_to')
                 ->add('tag')
-                ->with('TXA Data', array('collapsed' => true))
-                ->add('productexternals','sonata_type_collection', array('label' => 'TXA Data', 'by_reference' => true), 
+                ->add('type', 'hidden', array(
+                    'data' => 'Manual',
+                ))
+                ->with('TXA Settings', array('collapsed' => true))
+                
+                ->add('productexternals','sonata_type_collection', array('label' => 'TXA Settings', 'by_reference' => false), 
                         array('edit' => 'inline',
                             'inline' => 'table',
-                            'targetEntity'=>'Como\AccommodationBundle\Entity\ProductExternal', 
+                            'targetEntity'=>'Como\AccommodationBundle\Entity\ProductExternal',
+                            'options' => array('data_class' => 'Como\AccommodationBundle\Entity\Product'),
                             'link_parameters' => array('context' => 'productexternal')))     
                 
              ->with('Address', array('collapsed' => true))

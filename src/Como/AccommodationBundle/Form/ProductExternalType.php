@@ -26,6 +26,7 @@ class ProductExternalType extends AbstractType
 
     public function getName()
     {
-        return 'como_accommodationbundle_productexternaltype';
+//        return 'como_accommodationbundle_productexternaltype';
+        return 'productexternal';
     }
 }

@@ -28,7 +28,16 @@ class ProductExternalAdmin extends Admin
              ->with('Product Attributes')
                 ->add('txa_attribute')
                 ->add('provider_short_name')
+//                ->add('product', 'sonata_type_model', array('label' => 'Product', 'required' => true), array('edit' => 'standard'))
+//                ->add('product', 'entity', array(
+//                    'empty_value' => false,
+//                    'class' => 'ComoAccommodationBundle:ProductExternal',
+//                    'property' => 'product',
+//                ))
                 ->add('product')
+//                ->add('product', 'hidden', array(
+//                    'data' => "",
+//                ))
                 ->end();
         ;
     }

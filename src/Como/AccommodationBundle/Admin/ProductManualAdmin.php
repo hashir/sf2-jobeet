@@ -16,6 +16,10 @@ use Como\AccommodationBundle\Entity\Product;
 class ProductManualAdmin extends Admin
 {
 
+    protected $baseRouteName = 'admin_vendor_accommodationbundle_productmanual';
+
+    protected $baseRoutePattern = 'como/accommodation/productmanual';
+
 // setup the default sort column and order
     protected $datagridValues = array(
         '_sort_order' => 'ASC',
@@ -26,7 +30,7 @@ class ProductManualAdmin extends Admin
     { 
         $query = $this->getModelManager()->createQuery($this->getClass(), 'o');
         $query->add('where', 'o.type = :identifier') 
-               ->setParameter('identifier', 'ATDW'); 
+               ->setParameter('identifier', 'Manual'); 
 //        $proxyQuery = new ProxyQuery($queryBuilder); 
 //        $proxyQuery->leftJoin('c.address', 'a'); 
         return $query; 
@@ -42,11 +46,17 @@ class ProductManualAdmin extends Admin
                 ->add('product_description', 'text', array('required' => false))
                 ->add('rate_from')
                 ->add('rate_to')
-                ->with('TXA Data', array('collapsed' => true))
-                ->add('productexternals','sonata_type_collection', array('label' => 'TXA Data', 'by_reference' => true), 
+                ->add('tag')
+                ->add('type', 'hidden', array(
+                    'data' => 'Manual',
+                ))
+                ->with('TXA Settings', array('collapsed' => true))
+                
+                ->add('productexternals','sonata_type_collection', array('label' => 'TXA Settings', 'by_reference' => false), 
                         array('edit' => 'inline',
                             'inline' => 'table',
-                            'targetEntity'=>'Como\AccommodationBundle\Entity\ProductExternal', 
+                            'targetEntity'=>'Como\AccommodationBundle\Entity\ProductExternal',
+                            'options' => array('data_class' => 'Como\AccommodationBundle\Entity\Product'),
                             'link_parameters' => array('context' => 'productexternal')))     
                 
              ->with('Address', array('collapsed' => true))
