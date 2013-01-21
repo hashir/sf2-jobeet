@@ -1,13 +1,14 @@
 
 {% if warnings is defined %}
     {% if warnings.Warning[0] is not defined %}
-        <div class="row well">
+        
                 
         {% for w in warnings %}
-            <div class="alert alert-error"> {{ w['Provider']['@attributes']['short_name']}} : {{w.Message}} </div>
-            
+            <div class="row well">
+                <div class="alert alert-error"> {{ w['Provider']['@attributes']['short_name']}} : {{w.Message}} </div>
+            </div>
         {% endfor%}
-        </div>
+        
     {% else%}
          <div class="row well">
          {% for w in warnings.Warning %}
