@@ -4,13 +4,13 @@
         
                 
         {% for w in warnings %}
-            <div class="row well">
+<div class="row well" style="margin-left: 0px;">
                 <div class="alert alert-error" style="margin-bottom: 0px;"> {{ w['Provider']['@attributes']['short_name']}} : {{w.Message}} </div>
             </div>
         {% endfor%}
         
     {% else%}
-         <div class="row well">
+         <div class="row well"  style="margin-bottom: 0px;">
          {% for w in warnings.Warning %}
             <div class="alert alert-error" style="margin-bottom: 0px;"> {{ w['Provider']['@attributes']['short_name']}}  :  {{w.Message}} </div>
         {% endfor%}
