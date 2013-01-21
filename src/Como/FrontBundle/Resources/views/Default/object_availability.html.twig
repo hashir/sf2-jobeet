@@ -1,4 +1,22 @@
 
+{% if warnings is defined %}
+    {% if warnings.Warning[0] is not defined %}
+        <div class="row well">
+                
+        {% for w in warnings %}
+            <div class="alert alert-error"> {{ w['Provider']['@attributes']['short_name']}} : {{w.Message}} </div>
+            
+        {% endfor%}
+        </div>
+    {% else%}
+         <div class="row well">
+         {% for w in warnings.Warning %}
+            <div class="alert alert-error"> {{ w['Provider']['@attributes']['short_name']}}  :  {{w.Message}} </div>
+        {% endfor%}
+        </div>
+    {% endif%}
+{% endif%}
+<br />
 {% if txaData.Provider[0] is defined %}        
         {% for txa in txaData.Provider %}
         
