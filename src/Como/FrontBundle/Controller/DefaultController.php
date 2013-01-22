@@ -20,7 +20,7 @@ class DefaultController extends Controller
     public function detailsAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-    
+        
         $obj = $em->getRepository('ComoAccommodationBundle:Product')->find($id);        
         $prodExt = $txaData = "";
         foreach ($obj->getProductexternals() as $prodExternal)
@@ -39,8 +39,9 @@ class DefaultController extends Controller
             $avail_dates[] = date('d-m-Y', strtotime("+{$i}days"));
         }
 //        print_r($avail_dates);exit;
-        $txaProviderDump = $this->fetchTxaData();
-        
+        if(isset($txaData[2]))
+         $txaProviderDump = $this->fetchTxaData($txaData[2]);
+        else $txaProviderDump= null;
 //        print_r($txaProviderDump);exit;
         
         return $this->render('ComoFrontBundle:Default:details.html.twig', array('obj' => $obj,'avail_dates'=>$avail_dates, 'txaData' => $txaData, 'providerDump'=> $txaProviderDump));
@@ -112,11 +113,20 @@ class DefaultController extends Controller
         else
             $channels_array = null;
         
-        $ret_val = array($channels_array,$warnings_array);
+        $providers_array = array();
+        if(isset($channels_array['Provider'][0])){
+           foreach ($channels_array['Provider'] as $provider){
+                $providers_array[] = $provider['@attributes']['short_name'];
+            } 
+        }else{
+            $providers_array[] = $channels_array['Provider']['@attributes']['short_name'];
+        }
+        
+        $ret_val = array($channels_array,$warnings_array, $providers_array);
         return $ret_val;
     }
     
-    protected function fetchTxaData(){
+    protected function fetchTxaData($pr_ar){
         $Tdata = '<?xml version="1.0"?>
                     <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
                     <soap12:Body>
@@ -183,8 +193,15 @@ class DefaultController extends Controller
         
         $channels = $xml->xpath('//TXA:Channels');
         $channels_array = json_decode( json_encode($channels) , 1);
-                
-        return $channels_array[0]['Channel']['Providers']['Provider'][0];
+        
+        $ret_pr = array();
+        foreach($channels_array[0]['Channel']['Providers']['Provider'] as $pr){
+            if(in_array($pr['@attributes']['short_name'], $pr_ar))
+                $ret_pr[] = $pr;           
+        }
+        
+//        print_r($ret_pr);exit;
+        return $ret_pr;
     }
     
 }

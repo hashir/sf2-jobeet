@@ -1,13 +1,13 @@
 {% for ar_key,ar_val in providerDump %}
     
     <li>
-            <strong>{{ar_key}}</strong>
+        <p style="margin-bottom: 0px; font-size: 16px;">{{ar_key}}</p>
             {% if ar_val  | keys |length > 0 %}
                 <ul>
                     {% include 'ComoFrontBundle:Default:provider_dump.html.twig' with {'providerDump':ar_val} %}
                 </ul>
             {% else %}
-                : {{ar_val}}
+        <p class="text-info" style="margin-left: 10px;">{{ar_val}}</p>
             {% endif %}
         </li>
 {% endfor %}

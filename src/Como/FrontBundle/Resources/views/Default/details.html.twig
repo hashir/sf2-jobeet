@@ -8,7 +8,9 @@
         <li><a href="#tab2" data-toggle="tab">Availability</a></li>
     {% endif%}
     <li><a href="#tab3" data-toggle="tab">Map</a></li>
-    <li><a href="#tab4" data-toggle="tab">Provider Dump</a></li>
+    {% if providerDump[0] is defined %}
+        <li><a href="#tab4" data-toggle="tab">Provider Dump</a></li>
+    {% endif%}
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
@@ -23,11 +25,13 @@
     <div class="tab-pane" id="tab3">
       {% include 'ComoFrontBundle:Default:object_map.html.twig' with {'obj':obj} %}
     </div>
-    <div class="tab-pane" id="tab4"> 
-        <ul>
-            {% include 'ComoFrontBundle:Default:provider_dump.html.twig' with {'providerDump':providerDump}  %}
-        </ul>
-    </div>
+    {% if providerDump[0] is defined %}
+        <div class="tab-pane" id="tab4"> 
+            <ul>
+                {% include 'ComoFrontBundle:Default:provider_dump.html.twig' with {'providerDump':providerDump} only %}
+            </ul>
+        </div>
+    {% endif%}
   </div>
 </div>
 
